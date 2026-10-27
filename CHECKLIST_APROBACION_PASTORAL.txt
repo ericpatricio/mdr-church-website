@@ -1,0 +1,15 @@
+REVISIÓN PASTORAL — DECISIONES Y APROBACIONES
+
+[ ] Apariencia general y navegación (escritorio y móvil)
+[ ] Página Inicio: orden de secciones y mensajes de bienvenida
+[ ] Página Nosotros: historia, misión, visión y valores oficiales
+[ ] Liderazgo: nombres, títulos y fotografías oficiales
+[ ] Ministerios: lista real y descripciones aprobadas
+[ ] Eventos: calendario y flyers oficiales
+[ ] Mensajes: canales oficiales, videos, títulos y predicadores
+[ ] Visítanos: dirección, horario, contacto, estacionamiento y accesibilidad
+[ ] Logo original en calidad apropiada
+[ ] Fotografías auténticas con permiso de uso
+[ ] Traducción al inglés revisada por persona autorizada
+[ ] Administradores de publicación: principal y respaldo
+[ ] Aprobación final para iniciar integración GitHub / Netlify (por separado)
