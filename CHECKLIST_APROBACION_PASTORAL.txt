@@ -1,15 +1,9 @@
-REVISIÓN PASTORAL — DECISIONES Y APROBACIONES
+REVISIÓN PASTORAL
 
-[ ] Apariencia general y navegación (escritorio y móvil)
-[ ] Página Inicio: orden de secciones y mensajes de bienvenida
-[ ] Página Nosotros: historia, misión, visión y valores oficiales
-[ ] Liderazgo: nombres, títulos y fotografías oficiales
-[ ] Ministerios: lista real y descripciones aprobadas
-[ ] Eventos: calendario y flyers oficiales
-[ ] Mensajes: canales oficiales, videos, títulos y predicadores
-[ ] Visítanos: dirección, horario, contacto, estacionamiento y accesibilidad
-[ ] Logo original en calidad apropiada
-[ ] Fotografías auténticas con permiso de uso
-[ ] Traducción al inglés revisada por persona autorizada
-[ ] Administradores de publicación: principal y respaldo
-[ ] Aprobación final para iniciar integración GitHub / Netlify (por separado)
+Sitio funcional en español e inglés. Consultar README.md y QA.md.
+Logo MDR y fotografía de adoración suministrados por el propietario, integrados como imágenes separadas.
+Imagen de manantial generada con IA, identificada como ilustrativa.
+
+Pendiente: archivos originales de mayor resolución si están disponibles; historia y biografías aprobadas; información oficial de ministerios; eventos confirmados; enlaces de mensajes verificados.
+La dirección y los cuatro horarios provienen de las instrucciones del propietario.
+No se presentan eventos ficticios. No fusionar ni publicar sin aprobación.

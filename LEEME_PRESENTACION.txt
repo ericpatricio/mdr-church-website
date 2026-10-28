@@ -1,25 +1,3 @@
-IGLESIA DE DIOS MANANTIAL DE RESTAURACIÓN
-VISTA PREVIA DEL SITIO WEB — REVISIÓN PASTORAL
-
-CÓMO ABRIR
-1. Extraiga el archivo ZIP completo.
-2. Abra index.html en Chrome, Edge, Firefox o Safari.
-3. Navegue las seis páginas y pruebe ES / EN y el menú móvil.
-4. Para presentar desde otro dispositivo, comparta la carpeta completa o utilice un servidor local simple (por ejemplo: python -m http.server 8000).
-
-PÁGINAS
-Inicio / Nosotros / Ministerios / Eventos / Mensajes / Visítanos
-Todas disponibles en español e inglés.
-
-ATENCIÓN: ES UNA VISTA PREVIA PARA APROBACIÓN, NO UN SITIO PUBLICADO.
-- La ilustración de adoración NO es fotografía de la congregación.
-- La ilustración del edificio NO representa una foto real del templo.
-- El ícono de marca es provisional; sustituir por logo original autorizado.
-- Los eventos, mensajes y ministerios son demostrativos, NO oficiales.
-- Biografías, historia, misión, visión, valores y fotos oficiales pendientes.
-- Dirección, horario, contacto, estacionamiento y accesibilidad deben verificarse.
-- El botón Quiero servir dirige a Visítanos hasta definir un proceso oficial.
-- El formulario/CMS y publicación en Netlify quedan para una fase posterior.
-- El tipo de letra Manrope se carga desde Google Fonts si hay conexión; hay fuente alternativa sin conexión.
-
-NO se han realizado cambios a GitHub, Netlify, DNS ni al sitio de producción.
+Abrir index.html o ejecutar npm run dev y visitar http://127.0.0.1:4173/mdr-church-website/.
+Consultar README.md para mantenimiento y QA.md para pruebas ejecutadas y limitaciones.
+La versión está preparada para revisión; no se ha fusionado ni desplegado.

@@ -1,1 +1,17 @@
-document.querySelectorAll('[data-menu-toggle]').forEach(b=>b.addEventListener('click',()=>{const n=document.querySelector('.mobile-nav');const o=n.classList.toggle('open');b.setAttribute('aria-expanded',String(o))}));document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.classList.remove('active'));b.classList.add('active');const v=b.dataset.filter;document.querySelectorAll('[data-category]').forEach(x=>{x.hidden=v!=='all'&&x.dataset.category!==v})}));document.querySelectorAll('[data-search]').forEach(input=>input.addEventListener('input',()=>{const q=input.value.toLowerCase();document.querySelectorAll('[data-searchable]').forEach(x=>x.hidden=!x.textContent.toLowerCase().includes(q))}));
+const toggle = document.querySelector('[data-menu-toggle]');
+const menu = document.getElementById('mobile-menu');
+function setMenu(open) {
+  if (!toggle || !menu) return;
+  menu.hidden = !open;
+  toggle.setAttribute('aria-expanded', String(open));
+  toggle.setAttribute('aria-label', open ? toggle.dataset.close : toggle.dataset.open);
+}
+toggle?.addEventListener('click', () => setMenu(menu.hidden));
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && menu && !menu.hidden) {
+    setMenu(false);
+    toggle.focus();
+  }
+});
+menu?.addEventListener('click', event => { if (event.target.closest('a')) setMenu(false); });
+matchMedia('(min-width: 901px)').addEventListener('change', event => { if (event.matches) setMenu(false); });
