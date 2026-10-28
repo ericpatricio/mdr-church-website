@@ -26,3 +26,7 @@ The logo and ministry source images are small; church exterior source is 680 x 5
 Phone is sourced to the Google Maps listing; service times and names come from the owner's brief and require final church confirmation. A phone call was not placed. Instagram attribution is grounded in the supplied saved page; no Instagram authentication or private content is used.
 
 This revision is for review only. No merge or deployment was performed.
+
+## Pastoral card update
+
+Nosotros/About now displays two labeled official-photo placeholders: Obispo Raúl Cardona with Pastora Cindy Cardona; Pastor Raúl Cardona Jr. with Pastora Mildred Cardona. English titles are translated. The names/titles were supplied by the owner; no biography or portrait is invented. Browser verified exactly two cards in each language at 1440px and 390px with no horizontal overflow. Rebuild, static checks and generator syntax checks passed.
