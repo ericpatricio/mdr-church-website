@@ -1,15 +1,16 @@
 # Validation and review record
 
-- Ran the generator with Node successfully.
-- Ran `node scripts/check.mjs`: PASS, 12 localized pages, 318 local link/asset references, 4 image references.
-- Ran `node --check assets/app.js`: PASS.
-- Served the site locally using the repository subpath `/mdr-church-website/`.
-- Browser loaded all 12 localized pages at 1440 x 1000 and 390 x 844. All reported zero broken images and no horizontal overflow.
-- Clicked the Spanish homepage visit anchor and confirmed the Visítanos page; clicked the events anchor and confirmed Eventos.
-- Switched Spanish/English while retaining the current page.
-- Opened the mobile menu, checked visibility, closed with Escape and checked aria-expanded=false; followed a mobile ministry navigation link and observed the Ministries page.
-- Inspected the mobile homepage screenshot. Heading and both calls to action are separately rendered HTML elements.
+Current asset redesign:
+- Ran node scripts/build.mjs and node scripts/check.mjs successfully: 12 localized pages, 354 local links/asset references and 40 image references.
+- Ran node --check assets/app.js successfully.
+- Served locally under /mdr-church-website/.
+- Browser inspected all 12 pages at widths 1440, 390 and 320 pixels. No horizontal overflow was detected.
+- Initial image scan counted offscreen lazy images as pending. After bringing lazy assets into view, all 12 pages reported no failed or pending images.
+- Tested mobile menu open and Escape dismissal, visit and event hero anchors, and Spanish-to-English switching retaining the current page.
+- Inspected desktop and mobile homepage screenshots. Supporting worship photo uses a CSS crop of the supplied image; no people were generated or altered.
 
-Limitations: original MDR logo and authentic photos were absent and remain required for full brand approval. Church history, biographies and ministry details await official content. No verified sermon URLs or special events were supplied; honest empty states are displayed. Event filtering is not applicable until real records exist. No full accessibility audit, third-party map destination validation, or deployed GitHub Pages test was performed. Font uses Google Fonts with a fallback. Local browser checks do not certify every browser or screen size.
+Assets: owner-supplied logo and worship photo are integrated; symbolic spring landscape is labeled AI-generated. JPEG compression reduces the two large PNGs to approximately 527 KB combined. See assets/SOURCES.md.
+
+Remaining limitations: logo and photo are screenshot sources; higher-resolution originals would improve quality. Church history, biographies, ministry details, special events and sermon URLs await official content. Event filtering is not applicable without real records. No full accessibility audit, third-party map destination validation, or deployed GitHub Pages test was performed. Font loads from Google Fonts with a fallback.
 
 No merge or deployment was performed.

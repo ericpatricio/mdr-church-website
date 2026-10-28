@@ -1,14 +1,9 @@
 REVISIÓN PASTORAL
 
 Sitio funcional en español e inglés. Consultar README.md y QA.md.
+Logo MDR y fotografía de adoración suministrados por el propietario, integrados como imágenes separadas.
+Imagen de manantial generada con IA, identificada como ilustrativa.
 
-Pendiente para aprobación final:
-- Logo original autorizado de MDR (no está en el repositorio).
-- Fotografías auténticas, si están disponibles.
-- Historia y biografías aprobadas, si se desean publicar.
-- Información oficial de ministerios.
-- Eventos confirmados y enlaces de mensajes verificados.
-
+Pendiente: archivos originales de mayor resolución si están disponibles; historia y biografías aprobadas; información oficial de ministerios; eventos confirmados; enlaces de mensajes verificados.
 La dirección y los cuatro horarios provienen de las instrucciones del propietario.
-Las ilustraciones están identificadas. No se presentan eventos ficticios.
-No fusionar ni publicar sin aprobación del propietario.
+No se presentan eventos ficticios. No fusionar ni publicar sin aprobación.

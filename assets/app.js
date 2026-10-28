@@ -14,4 +14,4 @@ document.addEventListener('keydown', event => {
   }
 });
 menu?.addEventListener('click', event => { if (event.target.closest('a')) setMenu(false); });
-matchMedia('(min-width: 821px)').addEventListener('change', event => { if (event.matches) setMenu(false); });
+matchMedia('(min-width: 901px)').addEventListener('change', event => { if (event.matches) setMenu(false); });

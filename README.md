@@ -16,7 +16,7 @@ Edit translated copy and shared page templates in `scripts/build.mjs`, shared pr
 
 The address and four service times come from the project brief. No service names, pastoral biographies, ministry offerings, special events or contact details are inferred. No sermon URLs are published without verification. No event filters are shown because there are no confirmed event records.
 
-**Original MDR logo and authentic photography are not present in the source repository.** The provisional icon has been removed; the header currently uses the official name as HTML text. This is a review limitation, not a replacement original logo. Obtain authorized original assets before final approval, then add the logo as a separate image with descriptive alternative text. The existing small SVG illustrations contain no embedded headings, buttons or logos, and their illustrative nature is labeled in both languages.
+The owner-supplied MDR logo and worship photograph are now integrated. The generated spring-water landscape is labeled as illustrative. See assets/SOURCES.md for provenance, compression, and screenshot limitations.
 
 Keep the development branch separate. Merge and publication require the owner's approval. No production deployment has been performed.
 
