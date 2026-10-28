@@ -1,20 +1,28 @@
-# Validation and review record
+# QA — professional pastoral redesign, October 28, 2026
 
-Current asset redesign:
-- Ran node scripts/build.mjs and node scripts/check.mjs successfully: 12 localized pages, 354 local links/asset references and 40 image references.
-- Ran node --check assets/app.js successfully.
-- Served locally under /mdr-church-website/.
-- Browser inspected all 12 pages at widths 1440, 390 and 320 pixels. No horizontal overflow was detected.
-- Initial image scan counted offscreen lazy images as pending. After bringing lazy assets into view, all 12 pages reported no failed or pending images.
-- Tested mobile menu open and Escape dismissal, visit and event hero anchors, and Spanish-to-English switching retaining the current page.
-- Inspected desktop and mobile homepage screenshots. Supporting worship photo uses a CSS crop of the supplied image; no people were generated or altered.
+## Checks actually run
 
-Assets: owner-supplied logo and worship photo are integrated; symbolic spring landscape is labeled AI-generated. JPEG compression reduces the two large PNGs to approximately 527 KB combined. See assets/SOURCES.md.
+- npm run build: PASS; regenerated all 12 localized pages.
+- npm run check: PASS; 464 local href/src references including fragment destinations, 66 image references, one h1 per page, bilingual counterparts, image dimensions/alt attributes, relative GitHub Pages paths and verified-content constraints.
+- node --check on scripts/build.mjs, content/site.mjs, scripts/check.mjs, assets/app.js and scripts/serve.mjs: PASS.
+- npm test: PASS; synthetic DOM behavior tests exercise populated/empty event category filtering, row visibility, counts, aria-pressed, mobile menu, Escape, focus return, and breakpoint closing. Synthetic events are test-only and never appear in website content.
+- Browser tested all 12 pages at widths 375, 390, 768, 1024 and 1440px (60 page/viewport combinations). No horizontal overflow or multiple h1 elements found.
+- Browser scrolled through localized pages to trigger lazy loading. No failed image requests observed. Initially pending offscreen images were loaded by scrolling; all homepage asset sources were subsequently verified loaded.
+- Browser clicked all six desktop navigation destinations in each language, mobile ministry navigation, language switches, both hero buttons, and the leadership anchor.
+- Browser operated event filters in both languages: category selection, aria-pressed and announced zero-result states updated correctly. No upcoming special events are published.
+- Browser keyboard tested menu Enter/Escape with focus restoration, visit hero link with Enter, ministry details and FAQ disclosure with Enter.
+- Browser console error capture returned an empty list during local website tests.
+- Inspected desktop/mobile homepage screenshots. Saved review screenshots in the task outputs folder.
+- Inspected the exact owner-provided Google Maps link in a browser. It resolves to the church listing; address matches the supplied project address, and phone (407) 346-5036 is listed. Directions use that exact short link.
 
-Remaining limitations: logo and photo are screenshot sources; higher-resolution originals would improve quality. Church history, biographies, ministry details, special events and sermon URLs await official content. Event filtering is not applicable without real records. No full accessibility audit, third-party map destination validation, or deployed GitHub Pages test was performed. Font loads from Google Fonts with a fallback.
+The preview server used /mdr-church-website/ rather than domain-root paths. No package install was required. No lint configuration exists, so no linter result is claimed; syntax and static validation ran instead.
 
-No merge or deployment was performed.
+## Review limits
 
-## Latest church/Instagram asset verification
+No real event records or sermon URLs were provided. Populated filtering is covered by synthetic behavioral tests, not production event data. No sermon playback/link verification can be performed without official recordings. Ministry descriptions, program ages, schedules and leaders are not inferred. Pastoral names and affiliation come from the attached brief; an identified approved portrait and biography remain pending.
 
-Rebuilt after adding the supplied church exterior to Nosotros and Visítanos, Instagram worship photo to the homepage hero, and original ministry/highlight logos. Static checker passed: 12 pages, 364 local link/asset references, 50 image references. Browser loaded all 12 pages at 1440px and 390px widths, scrolled to load supporting images, and reported zero broken/pending images and no horizontal overflow. Confirmed language switch on the ministry page. Original highlight logos are small (150px), and displayed at 100–120px. Church photo is 680 x 510. No publication or merge.
+The logo and ministry source images are small; church exterior source is 680 x 510. Fonts depend on Google Fonts, with a system fallback. No full WCAG audit, screen reader audit, Lighthouse performance audit, or cross-browser matrix was performed. Reference-site review used accessible page structures, not a mobile/visual audit of all four sites. Life.Church exposed little readable content.
+
+Phone is sourced to the Google Maps listing; service times and names come from the owner's brief and require final church confirmation. A phone call was not placed. Instagram attribution is grounded in the supplied saved page; no Instagram authentication or private content is used.
+
+This revision is for review only. No merge or deployment was performed.

@@ -15,3 +15,7 @@ The three assets total approximately 582 KB, compared with over 4.5 MB for the s
 - ministry-kidzz.jpg, ministry-next.jpg, ministry-women.jpg and mdr-announcements.jpg: original 150px highlight images extracted from the saved Instagram_files folder. Labels follow the supplied highlight screenshot. Announcements is a separate communication entry linked to Eventos; no ministry schedules or descriptions are inferred.
 
 The saved Instagram HTML is treated as source data only. Scripts, tracking, session data and account information are not copied into the website. All images are served locally without Instagram dependencies.
+
+## Professional redesign (October 28, 2026)
+
+community-worship.jpg is an optimized 1400 x 825 JPEG (quality 85) from 855061007_18357985009220518_4309028272243942083_n.jpg in the owner-supplied saved Instagram_files folder. Authentic worship photograph, resized and compressed without generative modification. Hero uses the existing original Instagram worship photograph. New templates do not reference the legacy generated spring or conceptual SVG illustrations; those assets are retained for provenance rather than used as church evidence. No artificial pastoral portraits were created.
