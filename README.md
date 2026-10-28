@@ -1,25 +1,35 @@
-# MDR church website
+# MDR website — pastoral redesign
 
-Bilingual, buildless static website for Iglesia de Dios Manantial de Restauración. GitHub Pages compatible; committed HTML is the deployment artifact. No deployment workflow is introduced.
+A bilingual static website for Iglesia de Dios Manantial de Restauración. No frontend framework, runtime backend, CMS, database, or package dependencies are needed. GitHub Pages serves committed HTML under /mdr-church-website/.
 
-## Development
+## Preview and validate
 
-Node.js 18+; no package installation required.
+Use Node.js 18 or later from the repository directory:
 
-- `npm run build`: regenerate the 12 Spanish/English pages from `scripts/build.mjs`.
-- `npm run check`: validate local links, image references, headings, language counterparts and hero anchors.
-- `npm run dev`: serve at http://127.0.0.1:4173/mdr-church-website/ to exercise the GitHub Pages subpath.
+- npm run build — generate all 12 localized pages.
+- npm run check — validate assets, links and section anchors, language counterparts, headings, dimensions, and verified-content constraints.
+- npm run dev — open http://127.0.0.1:4173/mdr-church-website/.
 
-Edit translated copy and shared page templates in `scripts/build.mjs`, shared presentation in `assets/style.css`, and menu behavior in `assets/app.js`. Regenerate and check before committing. All internal links are relative. Manrope loads from Google Fonts with an Arial fallback.
+No linter is configured. JavaScript syntax is checked with node --check. See QA.md for checks actually run.
 
-## Content provenance and pastoral review
+## Maintain the site
 
-The address and four service times come from the project brief. No service names, pastoral biographies, ministry offerings, special events or contact details are inferred. No sermon URLs are published without verification. No event filters are shown because there are no confirmed event records.
+- content/site.mjs: church information, Spanish and English translations, ministry records, verified event and sermon arrays.
+- scripts/build.mjs: shared static page templates. Edit the generator, then rebuild rather than changing generated pages independently.
+- assets/style.css: responsive design tokens, typography and layout.
+- assets/app.js: keyboard-accessible mobile menu and event filtering.
+- assets/SOURCES.md: image provenance.
 
-The owner-supplied MDR logo, church exterior, ministry highlight logos and original Instagram worship photograph are integrated. The homepage hero uses the authentic Instagram photo; the generated spring landscape remains a decorative background on secondary pages. See assets/SOURCES.md for provenance, compression, and screenshot limitations.
+The homepage follows the supplied brief: hero; services/location; community; events; leadership; ministries; latest message; visit invitation; footer. All required pages share the same header, language links, footer, typography and colors.
 
-Keep the development branch separate. Merge and publication require the owner's approval. No production deployment has been performed.
+## Content boundaries
 
-## QA performed
+The owner supplied the motto, community wording, service names/times, denominational affiliation, and senior pastor names. The supplied Google Maps listing was inspected on October 28, 2026 and matches 4360 Monterey Rd, Kissimmee, FL 34758; it lists (407) 346-5036. Directions use the exact owner-supplied Maps short link. The church Instagram profile is supported by the owner's saved Instagram page.
 
-See `QA.md` for observed checks and remaining limitations.
+Service times still require final church confirmation. There are no confirmed upcoming special-event or sermon records. Event filters operate on the verified list and show a truthful zero-result state. Search and fake play buttons are not shown without recordings. Ministry names/logos are supplied; descriptions of programs, ages, leaders and schedules remain pending. No portrait is assumed to represent the pastors. Leadership uses approved names without invented biography.
+
+For future events, add only verified bilingual records with id, category (worship/community), start (ISO date/time with timezone), optional end, location, bilingual title, description and details, and optional local image filename. Past records are excluded when building. Rebuild after updates; a scheduled build is not configured. For sermons, add verified title.es/title.en, speaker, date, url and optional local image filename.
+
+## Review workflow
+
+Development branch: development/pastoral-redesign. Do not merge or deploy this revision without owner approval. The existing production website is unchanged by branch commits. AUDIT.md records findings and design research; QA.md records evidence and limits.

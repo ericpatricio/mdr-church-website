@@ -1,3 +1,3 @@
 Abrir index.html o ejecutar npm run dev y visitar http://127.0.0.1:4173/mdr-church-website/.
-Consultar README.md para mantenimiento y QA.md para pruebas ejecutadas y limitaciones.
-La versión está preparada para revisión; no se ha fusionado ni desplegado.
+Para desarrollo y mantenimiento, consultar README.md. Para la auditoría, AUDIT.md. Para pruebas ejecutadas y límites de verificación, QA.md.
+La revisión actual está en development/pastoral-redesign; no se ha fusionado ni desplegado.

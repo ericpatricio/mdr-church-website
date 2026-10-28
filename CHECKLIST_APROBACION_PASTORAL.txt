@@ -1,9 +1,10 @@
-REVISIÓN PASTORAL
+REVISIÓN PASTORAL — REDISEÑO PROFESIONAL
 
-Sitio funcional en español e inglés. Consultar README.md y QA.md.
-Logo MDR y fotografía de adoración suministrados por el propietario, integrados como imágenes separadas.
-Imagen de manantial generada con IA, identificada como ilustrativa.
+Consultar AUDIT.md, README.md, QA.md y assets/SOURCES.md.
 
-Pendiente: archivos originales de mayor resolución si están disponibles; historia y biografías aprobadas; información oficial de ministerios; eventos confirmados; enlaces de mensajes verificados.
-La dirección y los cuatro horarios provienen de las instrucciones del propietario.
-No se presentan eventos ficticios. No fusionar ni publicar sin aprobación.
+Implementado: seis páginas en español e inglés, logo original, fotografías auténticas, horarios con nombres de servicios, enlace de Google Maps, teléfono publicado en Maps, liderazgo con nombres proporcionados, ministerios con detalles accesibles y filtros de eventos con estados vacíos reales.
+
+Confirmar: horarios y nombres de servicios; fotografía y biografía oficial de los pastores; descripciones y horarios de ministerios; calendario de próximos eventos; enlaces oficiales de mensajes; información práctica sobre estacionamiento, accesibilidad y programas.
+
+No se incluyen eventos ficticios, videos inventados ni retratos generados.
+No fusionar ni desplegar esta revisión sin aprobación del propietario.
