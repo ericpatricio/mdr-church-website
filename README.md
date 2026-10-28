@@ -16,7 +16,7 @@ Edit translated copy and shared page templates in `scripts/build.mjs`, shared pr
 
 The address and four service times come from the project brief. No service names, pastoral biographies, ministry offerings, special events or contact details are inferred. No sermon URLs are published without verification. No event filters are shown because there are no confirmed event records.
 
-The owner-supplied MDR logo and worship photograph are now integrated. The generated spring-water landscape is labeled as illustrative. See assets/SOURCES.md for provenance, compression, and screenshot limitations.
+The owner-supplied MDR logo, church exterior, ministry highlight logos and original Instagram worship photograph are integrated. The homepage hero uses the authentic Instagram photo; the generated spring landscape remains a decorative background on secondary pages. See assets/SOURCES.md for provenance, compression, and screenshot limitations.
 
 Keep the development branch separate. Merge and publication require the owner's approval. No production deployment has been performed.
 

@@ -14,3 +14,7 @@ Assets: owner-supplied logo and worship photo are integrated; symbolic spring la
 Remaining limitations: logo and photo are screenshot sources; higher-resolution originals would improve quality. Church history, biographies, ministry details, special events and sermon URLs await official content. Event filtering is not applicable without real records. No full accessibility audit, third-party map destination validation, or deployed GitHub Pages test was performed. Font loads from Google Fonts with a fallback.
 
 No merge or deployment was performed.
+
+## Latest church/Instagram asset verification
+
+Rebuilt after adding the supplied church exterior to Nosotros and Visítanos, Instagram worship photo to the homepage hero, and original ministry/highlight logos. Static checker passed: 12 pages, 364 local link/asset references, 50 image references. Browser loaded all 12 pages at 1440px and 390px widths, scrolled to load supporting images, and reported zero broken/pending images and no horizontal overflow. Confirmed language switch on the ministry page. Original highlight logos are small (150px), and displayed at 100–120px. Church photo is 680 x 510. No publication or merge.
