@@ -31,3 +31,19 @@ function applyFilter(category, label) {
 }
 filters.forEach(button => button.addEventListener('click', () => applyFilter(button.dataset.filter, button.dataset.label)));
 if (filters.length) applyFilter('all', filters[0].dataset.label);
+
+// Search is rendered only when the build contains verified recordings.
+const sermonSearch = document.querySelector('[data-sermon-search]');
+const searchText = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase().trim();
+sermonSearch?.addEventListener('input', () => {
+  const query = searchText(sermonSearch.value);
+  let visible = 0;
+  document.querySelectorAll('[data-sermon]').forEach(card => {
+    card.hidden = !searchText(card.dataset.search).includes(query);
+    if (!card.hidden) visible++;
+  });
+  const status = document.querySelector('[data-sermon-status]');
+  if (status) status.textContent = `${status.dataset.prefix}: ${visible}`;
+  const empty = document.querySelector('[data-sermon-empty]');
+  if (empty) empty.hidden = visible > 0;
+});

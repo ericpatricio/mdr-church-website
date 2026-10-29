@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import { validateRecords, upcomingEvents, publishedSermons } from '../content/catalog.mjs';
+// Synthetic fixtures exist only in this test, never in content/site.mjs or page output.
+const bilingual = value => ({es:value,en:value});
+const event = {id:'test-event',verified:true,category:'community',title:bilingual('Test fixture'),description:bilingual('Test fixture'),details:bilingual('Test fixture'),location:'Test fixture',start:'2030-01-01T11:00:00-05:00',sourceUrl:'https://example.invalid/approved'};
+const message = {id:'test-message',verified:true,title:bilingual('Test fixture'),speaker:'Test fixture',date:'2029-01-01',url:'https://example.invalid/recording'};
+validateRecords([event],[message]);
+assert.throws(()=>validateRecords([{...event,start:'2030-01-01T11:00:00'}],[]),/timezone/);
+assert.throws(()=>validateRecords([{...event,end:'2029-01-01'}],[]),/end/);
+assert.throws(()=>validateRecords([{...event,title:{es:'Only one language'}}],[]),/bilingual/);
+assert.throws(()=>validateRecords([{...event,sourceUrl:'javascript:alert(1)'}],[]),/source/);
+assert.throws(()=>validateRecords([],[{...message,url:'javascript:alert(1)'}]),/HTTPS/);
+assert.throws(()=>validateRecords([],[{...message,image:'../private.jpg'}]),/local/);
+assert.throws(()=>validateRecords([event,{...event}],[]),/unique/);
+validateRecords([{verified:false}],[{verified:false}]);
+const later = {...event,id:'later',start:'2030-02-01T11:00:00-05:00'};
+const past = {...event,id:'past',start:'2020-01-01T11:00:00-05:00'};
+const draft = {...event,id:'draft',verified:false};
+assert.deepEqual(upcomingEvents([later,past,draft,event],new Date('2029-01-01')).map(x=>x.id),['test-event','later']);
+assert.deepEqual(publishedSermons([message,{...message,id:'newer',date:'2029-02-01'},{...message,id:'draft',verified:false}]).map(x=>x.id),['newer','test-message']);
+console.log('PASS: verified-content validation, draft exclusion, event expiry/order, sermon order and unsafe URL/image rejection.');

@@ -32,4 +32,12 @@ For future events, add only verified bilingual records with id, category (worshi
 
 ## Review workflow
 
-Development branch: development/pastoral-redesign. Do not merge or deploy this revision without owner approval. The existing production website is unchanged by branch commits. AUDIT.md records findings and design research; QA.md records evidence and limits.
+Development branch: development/stock-content-enhancements. Do not merge or deploy this revision without owner approval. The existing production website is unchanged by branch commits. AUDIT.md records findings and design research; QA.md records evidence and limits.
+
+## Latest update: stock imagery and content readiness
+
+There are now 18 localized pages: six main pages plus Kidzz, Next and Mujeres detail pages in each language. The ministry directory and homepage link to dedicated pages. See assets/stock/credits.json for licensed temporary photos, assets/stock/README.md for replacement instructions, and content/PUBLISHING.md for approved event/message records. Stock imagery does not establish real programs or activities. Pastoral portraits remain placeholders.
+
+content/catalog.mjs validates approved records before a build. Events are ordered by date and expired events excluded; the homepage supports three upcoming records. Verified messages support a featured latest recording, thumbnails, speaker/date, newest-first library, and accent-insensitive search when records exist. Current event/message arrays remain empty because official content is not yet available. npm test covers these behaviors using test-only fixtures.
+
+Current review branch: development/stock-content-enhancements. No merge/deployment is authorized for this revision yet.

@@ -1,8 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
-import {church, events, sermons} from '../content/site.mjs';
-const pages = ['index','nosotros','ministerios','eventos','mensajes','visitanos'];
+import {church, events, sermons, ministries} from '../content/site.mjs';
+import {validateRecords} from '../content/catalog.mjs';
+const pages = ['index','nosotros','ministerios','eventos','mensajes','visitanos',...ministries.map(m=>'ministerio-'+m.id)];
 let links = 0, images = 0;
 for (const lang of ['es','en']) for (const page of pages) {
   const file = `${lang}/${page}.html`;
@@ -32,19 +33,10 @@ for (const lang of ['es','en']) for (const page of pages) {
   if(page==='index') {
     assert(html.includes(lang==='es'?'Una iglesia de familia para la familia.':'A family church for the family.'));
     assert(html.includes('nosotros.html#liderazgo'));
-    assert(html.includes('ministerios.html#kidzz'));
+    assert(html.includes('ministerio-kidzz.html'));
     assert(html.includes('href="'+church.maps+'"'));
   }
   if(page==='eventos') assert.equal((html.match(/data-filter="/g)||[]).length,3);
 }
-for(const event of events) {
-  assert(event.verified===true,'Do not publish unverified events');
-  assert(event.start && !Number.isNaN(Date.parse(event.start)),'Events need a date');
-  assert(['worship','community'].includes(event.category),'Known event category');
-  assert(event.title.es && event.title.en && event.description.es && event.description.en);
-}
-for(const sermon of sermons) {
-  assert(sermon.verified===true,'Do not publish unverified sermons');
-  assert(/^https:\/\//.test(sermon.url),'Verified HTTPS sermon link');
-}
-console.log(`PASS: 12 bilingual pages, ${links} local references including fragment targets, ${images} images; menu/language semantics, metadata, hero links and verified-content constraints.`);
+validateRecords(events,sermons);
+console.log(`PASS: 18 bilingual pages, ${links} local references including fragment targets, ${images} images; menu/language semantics, metadata, hero links and verified-content constraints.`);

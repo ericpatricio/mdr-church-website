@@ -6,6 +6,6 @@
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
     "dev": "node scripts/serve.mjs",
-    "test": "node scripts/test-ui.mjs"
+    "test": "node scripts/test.mjs"
   }
 }

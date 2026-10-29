@@ -19,3 +19,7 @@ The saved Instagram HTML is treated as source data only. Scripts, tracking, sess
 ## Professional redesign (October 28, 2026)
 
 community-worship.jpg is an optimized 1400 x 825 JPEG (quality 85) from 855061007_18357985009220518_4309028272243942083_n.jpg in the owner-supplied saved Instagram_files folder. Authentic worship photograph, resized and compressed without generative modification. Hero uses the existing original Instagram worship photograph. New templates do not reference the legacy generated spring or conceptual SVG illustrations; those assets are retained for provenance rather than used as church evidence. No artificial pastoral portraits were created.
+
+## Temporary stock imagery and content expansion — October 28, 2026
+
+Four Pexels photographs are stored locally in assets/stock/. credits.json provides authors, source pages and the inspected Pexels license. Captions explicitly identify these as temporary stock, not MDR. No third-party images are hotlinked at runtime. Images illustrate ministry/detail and message-empty-state sections; they do not confirm real activities or sermon recordings. Existing original logos, real worship/exterior photos and approved pastoral placeholders are retained.
