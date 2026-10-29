@@ -48,3 +48,13 @@ assert.equal(toggle.focused,true);
 toggle.listeners.click();mediaEvents.change({matches:true});
 assert.equal(menu.hidden,true);
 console.log('PASS: populated and empty event filtering, result counts, pressed states; mobile menu open/Escape/focus/breakpoint behavior.');
+
+// Search behavior uses synthetic cards; no recordings are published by this test.
+const input = element(), searchStatus = element({prefix:'Messages found'}), searchEmpty = element();
+const messages = [element({search:'Gracia Raúl esperanza'}),element({search:'Familia Cindy fe'})];
+const searchDocument = {...document,querySelector(selector) { return ({'[data-sermon-search]':input,'[data-sermon-status]':searchStatus,'[data-sermon-empty]':searchEmpty})[selector] ?? document.querySelector(selector); },querySelectorAll(selector) { return selector==='[data-sermon]'?messages:document.querySelectorAll(selector); }};
+vm.runInNewContext(fs.readFileSync('assets/app.js','utf8'),{document:searchDocument,matchMedia:()=>({addEventListener(){}})});
+input.value='raul';input.listeners.input();assert.deepEqual(messages.map(m=>m.hidden),[false,true]);assert.equal(searchStatus.textContent,'Messages found: 1');
+input.value='No matching title';input.listeners.input();assert(messages.every(m=>m.hidden));assert.equal(searchEmpty.hidden,false);
+input.value='';input.listeners.input();assert(messages.every(m=>!m.hidden));assert.equal(searchEmpty.hidden,true);
+console.log('PASS: message search by speaker/title, accents, empty matches and reset.');

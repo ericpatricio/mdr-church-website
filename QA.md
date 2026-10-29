@@ -30,3 +30,17 @@ This revision is for review only. No merge or deployment was performed.
 ## Pastoral card update
 
 Nosotros/About now displays two labeled official-photo placeholders: Obispo Raúl Cardona with Pastora Cindy Cardona; Pastor Raúl Cardona Jr. with Pastora Mildred Cardona. English titles are translated. The names/titles were supplied by the owner; no biography or portrait is invented. Browser verified exactly two cards in each language at 1440px and 390px with no horizontal overflow. Rebuild, static checks and generator syntax checks passed.
+
+## Stock imagery and content expansion — October 28, 2026
+
+- Build and static checks passed for 18 bilingual pages, 704 local link/asset references including section anchors, and 114 image references.
+- Browser checked all 18 pages at 375, 390, 768, 1024 and 1440px (90 combinations). No horizontal overflow, duplicate main headings or unlabeled stock images were found.
+- Scrolled all 18 pages and waited for page loading to settle. No broken or pending images remained.
+- Clicked each ministry detail link, switched to its English counterpart and returned to the directory. Tested mobile menu Enter/Escape and detail-page FAQ disclosure. Console error capture was empty.
+- Verified that the sermon search control is absent while the approved sermon list is empty, and the Bible image is labeled as stock rather than a recording thumbnail.
+- npm test passed: populated/empty event filtering; mobile menu behavior; message search including accented names and no matches; draft exclusion; event expiry/order; sermon ordering; required bilingual fields; unsafe URL/image-path rejection.
+- Tests use isolated synthetic records. No invented events or recordings were added to content/site.mjs or generated pages. Real event/sermon publication still requires approved records.
+- Four Pexels images were visually inspected and stored locally; visible bilingual labels distinguish them from MDR photos. No stock portraits are attributed to named pastors. Original MDR logo, exterior and worship media remain.
+- No framework migration, CMS, database, account system, analytics or payment integration was introduced.
+
+This revision is prepared on development/stock-content-enhancements for review. No merge or deployment performed. Earlier QA sections describe prior revisions, not a claim of current production verification.

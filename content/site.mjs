@@ -10,13 +10,21 @@ export const church = {
 export const events = [];
 export const sermons = [];
 export const ministries = [
-  { id: 'kidzz', name: 'MDR Kidzz', image: 'ministry-kidzz.jpg' },
-  { id: 'next', name: 'MDR Next', image: 'ministry-next.jpg' },
-  { id: 'mujeres', name: 'Mujeres', image: 'ministry-women.jpg' },
+  { id: 'kidzz', name: 'MDR Kidzz', image: 'ministry-kidzz.jpg', photo: 'stock/creative-hands.jpg', photoWidth: 1400, photoHeight: 933 },
+  { id: 'next', name: 'MDR Next', image: 'ministry-next.jpg', photo: 'stock/bible-study.jpg', photoWidth: 1400, photoHeight: 933 },
+  { id: 'mujeres', name: 'Mujeres', image: 'ministry-women.jpg', photo: 'stock/women-study.jpg', photoWidth: 1400, photoHeight: 2100 },
 ];
 export const languages = {
   es: {
     nav: ['Inicio', 'Nosotros', 'Ministerios', 'Eventos', 'Mensajes', 'Visítanos'],
+    stockLabel: 'Imagen de stock temporal · No es MDR',
+    stockAlts: { kidzz: 'Imagen de stock: manos dibujando con lápices de colores', next: 'Imagen de stock: personas leyendo la Biblia', mujeres: 'Imagen de stock: mujeres en un encuentro de lectura' },
+    stockBibleAlt: 'Imagen de stock: una Biblia abierta sobre una mesa',
+    backMinistries: 'Todos los ministerios', participation: 'Da tu próximo paso.',
+    participationText: 'Conoce este ministerio y pregunta directamente a la iglesia cómo participar. Los horarios, responsables y detalles de los programas se publicarán cuando estén confirmados.',
+    ministryQuestions: 'Preguntas para tu visita', ministryQ: ['¿Cómo puedo participar?', '¿Cuáles son los horarios y requisitos?', '¿Con quién puedo conversar?'],
+    ministryA: ['Acompáñanos en un servicio y pregunta al equipo de la iglesia sobre este ministerio.', 'Llama a la iglesia para confirmar los horarios y cualquier requisito antes de asistir.', 'El equipo de la iglesia puede orientarte durante tu visita. Todavía no publicamos nombres de responsables sin confirmación oficial.'],
+    sermonSearch: 'Buscar mensajes', sermonSearchPlaceholder: 'Título, predicador o tema', sermonCount: 'Mensajes encontrados', sermonNone: 'No hay mensajes que coincidan con tu búsqueda.',
     welcome: 'Bienvenido a casa', headline: 'Una iglesia de familia para la familia.',
     intro: 'Adoramos a Dios, crecemos juntos y servimos a nuestra comunidad con amor.',
     visit: 'Planifica tu visita', events: 'Ver eventos', allEvents: 'Ver todos los eventos',
@@ -65,6 +73,14 @@ export const languages = {
   },
   en: {
     nav: ['Home', 'About us', 'Ministries', 'Events', 'Messages', 'Visit us'],
+    stockLabel: 'Temporary stock image · Not MDR',
+    stockAlts: { kidzz: 'Stock image: hands drawing with colored pencils', next: 'Stock image: people reading the Bible', mujeres: 'Stock image: women at a reading gathering' },
+    stockBibleAlt: 'Stock image: an open Bible on a table',
+    backMinistries: 'All ministries', participation: 'Take your next step.',
+    participationText: 'Learn about this ministry and ask the church directly how to participate. Schedules, contacts, and program details will be published once confirmed.',
+    ministryQuestions: 'Questions for your visit', ministryQ: ['How can I participate?', 'What are the schedules and requirements?', 'Who can I speak with?'],
+    ministryA: ['Join us for a service and ask the church team about this ministry.', 'Call the church to confirm schedules and any requirements before attending.', 'The church team can guide you during your visit. We do not publish ministry contact names without official confirmation.'],
+    sermonSearch: 'Search messages', sermonSearchPlaceholder: 'Title, speaker, or topic', sermonCount: 'Messages found', sermonNone: 'No messages match your search.',
     welcome: 'Welcome home', headline: 'A family church for the family.',
     intro: 'We worship God, grow together, and serve our community with love.',
     visit: 'Plan your visit', events: 'View events', allEvents: 'View all events',
