@@ -41,3 +41,7 @@ There are now 18 localized pages: six main pages plus Kidzz, Next and Mujeres de
 content/catalog.mjs validates approved records before a build. Events are ordered by date and expired events excluded; the homepage supports three upcoming records. Verified messages support a featured latest recording, thumbnails, speaker/date, newest-first library, and accent-insensitive search when records exist. Current event/message arrays remain empty because official content is not yet available. npm test covers these behaviors using test-only fixtures.
 
 Current review branch: development/stock-content-enhancements. No merge/deployment is authorized for this revision yet.
+
+## Current release
+
+The owner authorized preserving this bilingual project and applying the latest MDR visual changes, then committing, merging and deploying. The review restrictions above refer to earlier revisions. Current source of truth remains content/site.mjs and scripts/build.mjs; all generated English and Spanish pages were rebuilt and verified. No server-backed event administration is added to this static GitHub Pages project.

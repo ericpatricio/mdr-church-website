@@ -47,3 +47,6 @@ sermonSearch?.addEventListener('input', () => {
   const empty = document.querySelector('[data-sermon-empty]');
   if (empty) empty.hidden = visible > 0;
 });
+
+// Hero rotation: no visible controls, as requested by the site owner.
+const hero=document.querySelector('[data-hero]');if(hero){const slides=[...hero.querySelectorAll('.hero-slide')],reduced=matchMedia('(prefers-reduced-motion: reduce)');let current=0;setInterval(()=>{if(reduced.matches||document.hidden||hero.matches(':hover')||hero.contains(document.activeElement))return;current=(current+1)%slides.length;hero.dataset.slideType=slides[current].dataset.slideType;slides.forEach((slide,i)=>slide.hidden=i!==current);},8000);}

@@ -44,3 +44,9 @@ Nosotros/About now displays two labeled official-photo placeholders: Obispo Raú
 - No framework migration, CMS, database, account system, analytics or payment integration was introduced.
 
 This revision is prepared on development/stock-content-enhancements for review. No merge or deployment performed. Earlier QA sections describe prior revisions, not a claim of current production verification.
+
+## Approved visual refresh — November 1, 2026
+
+Owner approved applying the latest MDR visuals while retaining the bilingual site. The homepage now has a 90%-width, 90vh background slideshow beginning with the supplied waterfall image, followed by the supplied worship, intercession and Bible-study images. No previous/next/pause controls are rendered; rotation pauses during hover/focus and is disabled for reduced motion. Navbar logo renders 10% larger. The first-visit invitation uses generated illustrative welcome imagery, not a photo of MDR members.
+
+Build, all 18 bilingual-page link/asset checks, catalog and interaction tests, and JavaScript syntax checks passed. This revision is authorized for merge and deployment by the owner's request in the current chat.
