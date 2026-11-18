@@ -1,47 +1,85 @@
-# MDR website — pastoral redesign
+# MDR Church website
 
-A bilingual static website for Iglesia de Dios Manantial de Restauración. No frontend framework, runtime backend, CMS, database, or package dependencies are needed. GitHub Pages serves committed HTML under /mdr-church-website/.
+Bilingual static website for Iglesia de Dios Manantial de Restauración. A small
+Node generator produces 20 localized pages: six main pages and four ministry
+detail pages in Spanish and English. GitHub Pages serves committed HTML under
+`/mdr-church-website/`. There is no frontend framework, backend, CMS, database or
+package dependency to install.
 
-## Preview and validate
+## Local development in VS Code
 
-Use Node.js 18 or later from the repository directory:
+Install Node.js 18 or later and Git, clone `ericpatricio/mdr-church-website` or
+open your existing checkout in VS Code, and use the integrated terminal at the
+repository root. No `npm install` is required.
 
-- npm run build — generate all 12 localized pages.
-- npm run check — validate assets, links and section anchors, language counterparts, headings, dimensions, and verified-content constraints.
-- npm run dev — open http://127.0.0.1:4173/mdr-church-website/.
+```powershell
+npm.cmd run build
+npm.cmd run check
+npm.cmd test
+npm.cmd run dev
+```
 
-No linter is configured. JavaScript syntax is checked with node --check. See QA.md for checks actually run.
+On other shells, use `npm` with the same commands. `npm.cmd` avoids Windows
+PowerShell's possible block on `npm.ps1` without changing execution policy.
+Visit <http://127.0.0.1:4173/mdr-church-website/>. The server remains running until
+Ctrl+C. Edit source, rebuild in a second terminal, then refresh the browser;
+there is no automatic rebuild or live reload.
 
-## Maintain the site
+## Source files
 
-- content/site.mjs: church information, Spanish and English translations, ministry records, verified event and sermon arrays.
-- scripts/build.mjs: shared static page templates. Edit the generator, then rebuild rather than changing generated pages independently.
-- assets/style.css: responsive design tokens, typography and layout.
-- assets/app.js: keyboard-accessible mobile menu and event filtering.
-- assets/SOURCES.md: image provenance.
+- `content/site.mjs`: verified church information, translations, ministry records,
+  and the single event and sermon catalogs.
+- `content/catalog.mjs`: publication, date, bilingual field, URL and flyer validation;
+  upcoming event and sermon selection.
+- `scripts/build.mjs`: shared static page generation.
+- `scripts/event-rendering.mjs`: shared event markup, localized dates and escaping.
+- `assets/app.js`: mobile navigation, event filtering/expiration, sermon search and
+  the existing approved hero rotation.
+- `assets/style.css`: existing responsive design and branding.
+- `scripts/check.mjs`: generated page links, anchors, image references, language
+  counterparts and GitHub Pages relative paths.
+- `scripts/test*.mjs`: dependency-free content, generated-output and synthetic
+  interaction tests. No browser test runner is installed.
 
-The homepage follows the supplied brief: hero; services/location; community; events; leadership; ministries; latest message; visit invitation; footer. All required pages share the same header, language links, footer, typography and colors.
+Edit source files and rebuild instead of editing `en/*.html` or `es/*.html`.
+See [EVENTS_GUIDE.md](EVENTS_GUIDE.md) for adding, previewing, publishing,
+correcting and cancelling events. See [content/PUBLISHING.md](content/PUBLISHING.md)
+for the existing sermon workflow and [assets/SOURCES.md](assets/SOURCES.md) for
+image provenance. Legacy assets are retained.
 
 ## Content boundaries
 
-The owner supplied the motto, community wording, service names/times, denominational affiliation, and senior pastor names. The supplied Google Maps listing was inspected on October 28, 2026 and matches 4360 Monterey Rd, Kissimmee, FL 34758; it lists (407) 346-5036. Directions use the exact owner-supplied Maps short link. The church Instagram profile is supported by the owner's saved Instagram page.
+No approved special events or sermon recordings have been provided. Both catalogs
+remain empty; synthetic tests never publish fictional church events. Weekly
+services stay separate from special events. Ministry descriptions, leaders,
+program ages and schedules must not be inferred from photographs. Existing
+pastoral names and labelled portrait placeholders are preserved. Service times
+still need final church confirmation. Verified church information is unchanged.
 
-Service times still require final church confirmation. There are no confirmed upcoming special-event or sermon records. Event filters operate on the verified list and show a truthful zero-result state. Search and fake play buttons are not shown without recordings. Ministry names/logos are supplied; descriptions of programs, ages, leaders and schedules remain pending. No portrait is assumed to represent the pastors. Leadership uses approved names without invented biography.
+Events use draft, published and cancelled states. Existing event records without
+status retain the legacy `verified` mapping. The homepage shows the next three
+published upcoming events; the Events page also labels future cancellations.
+Browser checks remove expired cards on load, every 30 seconds and when a tab
+becomes visible. Later homepage cards take their places without a rebuild. With
+JavaScript disabled, event cards are hidden with an explanatory message.
+New content and corrections still require rebuilding and approved deployment.
 
-For future events, add only verified bilingual records with id, category (worship/community), start (ISO date/time with timezone), optional end, location, bilingual title, description and details, and optional local image filename. Past records are excluded when building. Rebuild after updates; a scheduled build is not configured. For sermons, add verified title.es/title.en, speaker, date, url and optional local image filename.
+## Branch and review workflow
 
-## Review workflow
+Pastoral release branch: `development/pastoral-file-release`.
+Check `git status` and `git branch --show-current` before editing. Work on a
+dedicated development branch; do not commit directly to `main`. Run all three
+checks above, review both languages locally and inspect the VS Code Source
+Control diff. Commit source, flyers and generated HTML together in focused changes.
+After owner approval to push, publish the development branch and open a GitHub
+pull request targeting `main`. Merge and deployment require separate approval.
 
-Development branch: development/stock-content-enhancements. Do not merge or deploy this revision without owner approval. The existing production website is unchanged by branch commits. AUDIT.md records findings and design research; QA.md records evidence and limits.
+The owner authorized committing, merging and deploying this file-based release on
+November 17, 2026 for pastoral review. The unfinished Sanity proof of concept is
+excluded. Historical release notes in AUDIT.md and QA.md describe earlier work.
 
-## Latest update: stock imagery and content readiness
+## Validation limits
 
-There are now 18 localized pages: six main pages plus Kidzz, Next and Mujeres detail pages in each language. The ministry directory and homepage link to dedicated pages. See assets/stock/credits.json for licensed temporary photos, assets/stock/README.md for replacement instructions, and content/PUBLISHING.md for approved event/message records. Stock imagery does not establish real programs or activities. Pastoral portraits remain placeholders.
-
-content/catalog.mjs validates approved records before a build. Events are ordered by date and expired events excluded; the homepage supports three upcoming records. Verified messages support a featured latest recording, thumbnails, speaker/date, newest-first library, and accent-insensitive search when records exist. Current event/message arrays remain empty because official content is not yet available. npm test covers these behaviors using test-only fixtures.
-
-Current review branch: development/stock-content-enhancements. No merge/deployment is authorized for this revision yet.
-
-## Current release
-
-The owner authorized preserving this bilingual project and applying the latest MDR visual changes, then committing, merging and deploying. The review restrictions above refer to earlier revisions. Current source of truth remains content/site.mjs and scripts/build.mjs; all generated English and Spanish pages were rebuilt and verified. No server-backed event administration is added to this static GitHub Pages project.
+`npm test` runs real generator/checker integration tests in an isolated temporary
+directory and synthetic DOM tests; it does not replace browser or screen-reader
+testing. See [QA.md](QA.md) for executed checks and current limitations.
