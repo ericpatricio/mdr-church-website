@@ -8,6 +8,10 @@ Existing authentic MDR worship and exterior photos and the original logos remain
 
 ## Replace with authorized MDR photos
 
+Caballeros reuses the credited `bible-study.jpg` illustration. The separate
+`men-study.jpg` file is retained but is not displayed: its source and permission
+have not been documented. Record and verify its provenance before using it.
+
 1. Put the approved optimized photo in assets/ with a descriptive filename; keep original source files outside the public repository if they contain private metadata or unnecessary personal data.
 2. Update the appropriate ministry record's photo, photoWidth and photoHeight in content/site.mjs. Update the image's bilingual alternative text.
 3. Change the ministryPhoto helper to render the approved photograph with an authentic-photo caption, rather than calling stockPhoto for that record. Do not leave a stock caption on an authentic image, or remove the label while still using a stock photo.

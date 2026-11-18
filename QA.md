@@ -1,4 +1,68 @@
+# Pastoral file-based release ? November 17, 2026
+
+Owner authorized commit, merge and GitHub Pages deployment for pastoral review.
+Build, static validation (20 pages, 802 local references, 142 images), automated
+tests and plain git diff --check passed in the isolated release worktree.
+The event catalog is empty. Sanity Studio, CMS adapters, account configuration
+and all fictional CMS records are excluded. The unfinished POC remains local.
+Browser viewport/console verification remains incomplete as documented below;
+the accepted manual bilingual event exercise covered publishing/filtering/cancellation.
+
+---
+
 # QA — professional pastoral redesign, October 28, 2026
+
+## Final QA corrections — November 17, 2026
+
+The current catalog has four ministries and 20 localized pages. Build/check
+messages now calculate the count. Caballeros uses the exact-case logo filename,
+descriptive Spanish/English image alternatives, and the existing credited
+Bible-study stock photo. The unverified `men-study.jpg` is retained but unused.
+Static validation now rejects filename case mismatches and missing/undefined
+image alternatives. Edited text files use LF line endings for plain diff checks.
+
+Browser viewport comparisons at 390, 768 and 1440 pixels, actual keyboard and
+language-switch interactions, console errors, and screen-reader checks remain
+unverified because browser access was unavailable. Historical results below do
+not establish that these current browser checks passed.
+
+## Events publishing refactor — November 16, 2026
+
+This section describes the current local development branch; later sections are
+historical release evidence. No push, merge or deployment is authorized.
+
+Executed checks:
+
+- `npm.cmd run build`: regenerated all 18 localized pages.
+- `npm.cmd run check`: validated 18 pages, local references, image references,
+  section anchors, language counterparts, menu semantics and GitHub Pages paths.
+- `npm.cmd test`: existing synthetic menu/filter/search tests and catalog tests,
+  plus event status validation, duplicate IDs, invalid/missing flyers, bilingual
+  fields, unsafe URLs, date ordering, spring-forward gaps, both fall-back offsets,
+  expiration boundaries, cancelled registration suppression, homepage selection,
+  browser-clock expiration and promotion of a fourth homepage event.
+- Populated integration tests run the actual generator and static checker in an
+  isolated temporary copy, checking Spanish and English output with published,
+  cancelled and draft fixtures. No fixtures enter the public catalog.
+- Local HTTP checks returned 200 for all 18 localized pages. The 14 pages outside
+  Home and Events match their previous generated content after newline normalization.
+- JavaScript syntax checks passed for the generator, event renderer, catalog and
+  browser script. Diff whitespace checks passed with CRLF line endings recognized.
+
+Browser DOM access reported that its host was unavailable. A Windows Chrome
+fallback was attempted, but Computer Use stopped because it could not determine
+the current browser URL confidently enough to enforce policy. No baseline or
+after screenshots, visual comparison, browser keyboard test, console inspection,
+screen-reader audit or new cross-browser assessment was completed. Synthetic
+interaction tests are not represented as browser tests. Manual desktop/mobile
+review is still required before release.
+
+The existing approved layout, logo and assets are retained. Flyers use contain
+sizing to preserve their text. Expiration depends on the visitor's device clock
+and JavaScript, with a maximum active-page interval of 30 seconds; background
+tabs refresh when visible. Without JavaScript, cards are hidden and a translated
+instruction is displayed. No scheduled rebuild or external integration is added.
+
 
 ## Checks actually run
 

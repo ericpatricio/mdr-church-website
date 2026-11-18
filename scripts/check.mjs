@@ -22,11 +22,20 @@ for (const lang of ['es','en']) for (const page of pages) {
     const [target, fragment] = url.split('#');
     const dest = target ? path.resolve(path.dirname(file),target) : path.resolve(file);
     assert(fs.existsSync(dest), `${file}: missing ${url}`);
+    if (target) {
+      let directory = process.cwd();
+      assert(!path.relative(directory, dest).startsWith('..'), `${file}: local reference leaves the repository: ${url}`);
+      for (const segment of path.relative(directory, dest).split(path.sep)) {
+        assert(fs.readdirSync(directory).includes(segment), `${file}: incorrect filename capitalization in ${url}`);
+        directory = path.join(directory, segment);
+      }
+    }
     if (fragment) assert(fs.readFileSync(dest,'utf8').includes(`id="${fragment}"`), `${file}: missing fragment ${url}`);
     links++;
   }
   for (const [tag] of html.matchAll(/<img\b[^>]*>/g)) {
     assert(/alt="[^"]*"/.test(tag),`${file}: missing alt`);
+    assert(!/alt="(?:undefined|null|\s*)"/.test(tag), `${file}: provide descriptive image alt text`);
     assert(/width="\d+"/.test(tag) && /height="\d+"/.test(tag),`${file}: image layout dimensions`);
     images++;
   }
@@ -39,4 +48,4 @@ for (const lang of ['es','en']) for (const page of pages) {
   if(page==='eventos') assert.equal((html.match(/data-filter="/g)||[]).length,3);
 }
 validateRecords(events,sermons);
-console.log(`PASS: 18 bilingual pages, ${links} local references including fragment targets, ${images} images; menu/language semantics, metadata, hero links and verified-content constraints.`);
+console.log(`PASS: ${pages.length * 2} bilingual pages, ${links} local references including fragment targets, ${images} images; menu/language semantics, metadata, hero links and verified-content constraints.`);
