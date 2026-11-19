@@ -29,6 +29,26 @@ try {
     assert(!fs.readFileSync(path.join(release, language, 'nosotros.html'), 'utf8').includes('data-cms-events-config'));
   }
   execFileSync(process.execPath, [path.join(root, 'scripts/check.mjs')], {cwd: release});
+  // Rebuild in an isolated copy to prove default CMS activation is reproducible
+  // and file-mode rollback removes it without changing the production selector.
+  for (const directory of ['content', 'scripts']) fs.cpSync(directory, path.join(temporary, directory), {recursive: true});
+  fs.writeFileSync(path.join(temporary, 'content/event-source.mjs'), "export const EVENT_SOURCE = 'sanity';\n");
+  execFileSync(process.execPath, ['scripts/build.mjs', '--file-events'], {cwd: temporary});
+  for (const lang of ['es', 'en']) for (const page of ['index', 'eventos']) {
+    assert(!fs.readFileSync(path.join(temporary, lang, page + '.html'), 'utf8').includes('data-cms-events-config'));
+  }
+  const rollbackArtifact = prepareCmsRelease(temporary);
+  assert.equal((fs.readFileSync(path.join(rollbackArtifact, 'en/index.html'), 'utf8').match(/data-cms-events-config/g) || []).length, 1);
+  execFileSync(process.execPath, ['scripts/build.mjs'], {cwd: temporary});
+  for (const lang of ['es', 'en']) for (const page of ['index', 'eventos']) {
+    assert.equal((fs.readFileSync(path.join(temporary, lang, page + '.html'), 'utf8').match(/data-cms-events-config/g) || []).length, 1);
+  }
+  prepareCmsRelease(temporary); // Already-active pages are safe to prepare again.
+  const activePage = path.join(temporary, 'es/index.html');
+  const activeHtml = fs.readFileSync(activePage, 'utf8');
+  fs.writeFileSync(activePage, activeHtml.replace('</body>', '<script data-cms-events-config></script></body>'));
+  assert.throws(() => prepareCmsRelease(temporary), /duplicate CMS bootstrap/);
+  fs.writeFileSync(activePage, activeHtml);
   const config = path.join(temporary, 'studio/sanity.config.ts');
   fs.writeFileSync(config, fs.readFileSync(config, 'utf8').replace("dataset: 'poc'", "dataset: 'production'"));
   assert.throws(() => prepareCmsRelease(temporary), /dataset differs/);
@@ -80,4 +100,4 @@ try {
     }
   }
 } finally {Object.assign(globalThis, saved);}
-console.log('PASS: isolated CMS release artifact, matching Studio target, static subpaths, production bootstrap and bilingual empty/outage states; normal pages unchanged.');
+console.log('PASS: isolated CMS release artifact, matching Studio target, static subpaths, production bootstrap and bilingual empty/outage states; reproducible default CMS activation and file-mode rollback.');

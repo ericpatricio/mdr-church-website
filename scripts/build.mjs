@@ -2,6 +2,11 @@ import fs from 'node:fs';
 import { escapeHtml as esc, renderEventList } from './event-rendering.mjs';
 import { church, languages, ministries, events, sermons } from '../content/site.mjs';
 import { validateRecords, upcomingEvents, publishedSermons } from '../content/catalog.mjs';
+import {EVENT_SOURCE} from '../content/event-source.mjs';
+import {cmsBootstrap, assertCmsTarget} from './prepare-cms-release.mjs';
+if (!['sanity', 'file'].includes(EVENT_SOURCE)) throw new Error('Invalid event source.');
+const cmsEnabled = EVENT_SOURCE === 'sanity' && !process.argv.includes('--file-events');
+if (cmsEnabled) assertCmsTarget(process.cwd());
 validateRecords(events, sermons);
 const eventCatalog = upcomingEvents(events);
 const sermonCatalog = publishedSermons(sermons);
@@ -83,8 +88,11 @@ ${['index', 'eventos'].includes(page) ? `<noscript><style>[data-event-group] .ev
 </body>
 </html>
 `;
-    fs.writeFileSync(`${lang}/${page}.html`, html);
+    const output = cmsEnabled && ['index', 'eventos'].includes(page)
+      ? html.replace('</body>', cmsBootstrap(lang, t) + '</body>') : html;
+    fs.writeFileSync(`${lang}/${page}.html`, output);
   }
 }
 fs.writeFileSync('index.html', `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="0;url=es/index.html"><title>${church.name}</title></head><body><a href="es/index.html">Español</a> · <a href="en/index.html">English</a></body></html>`);
+console.log('Event source: ' + (cmsEnabled ? 'Sanity published events' : 'file catalog'));
 console.log(`Generated ${Object.keys(languages).length * (pages.length + ministries.length)} bilingual pages, including ${Object.keys(languages).length * ministries.length} ministry detail pages.`);

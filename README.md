@@ -84,3 +84,8 @@ notes in AUDIT.md and QA.md describe earlier work, not current authorization.
 `npm test` runs real generator/checker integration tests in an isolated temporary
 directory and synthetic DOM tests; it does not replace browser or screen-reader
 testing. See [QA.md](QA.md) for executed checks and current limitations.
+
+
+## Controlled church pilot
+
+Normal `npm run build` now uses the source selected by `content/event-source.mjs`: Sanity published events for the pilot. See [PRODUCTION_RELEASE.md](PRODUCTION_RELEASE.md) for reproducible activation and the durable file-based rollback, and [GUIA_ADMIN_EVENTOS.md](GUIA_ADMIN_EVENTOS.md) for nontechnical Spanish administrator instructions. Earlier preparation notes above describe the pre-activation phase.

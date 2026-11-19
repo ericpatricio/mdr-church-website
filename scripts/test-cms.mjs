@@ -147,7 +147,9 @@ for (const cms of [false, true]) {
     for (const lang of ['es', 'en']) for (const page of ['index', 'eventos']) {
       const response = await fetch(`${base}${lang}/${page}.html`);
       assert.equal(response.status, 200);
-      assert.equal((await response.text()).includes('data-cms-poc-config'), cms);
+      const html = await response.text();
+      assert.equal(html.includes('data-cms-poc-config'), cms);
+      if (cms) assert(!html.includes('data-cms-events-config'), 'POC preview must not mount a second public feed');
     }
     assert.equal((await fetch(`${base}studio/sanity.config.ts`)).status, 403);
     assert.equal((await fetch(`${base}assets/cms-events.mjs`)).headers.get('content-type'), 'text/javascript');

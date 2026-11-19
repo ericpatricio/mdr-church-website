@@ -42,7 +42,8 @@ const server = http.createServer((req, res) => {
       }}).replaceAll('<', '\\u003c');
       const injection = `<script type="application/json" data-cms-poc-config>${config}</script><script type="module" src="../assets/cms-poc-ui.mjs"></script>`;
       res.setHeader('Cache-Control', 'no-store');
-      res.end(fs.readFileSync(target, 'utf8').replace('</body>', injection + '</body>'));
+      const html = fs.readFileSync(target, 'utf8').replace(/<script type="application\/json" data-cms-events-config>[\s\S]*?<\/script><script type="module" src="\.\.\/assets\/cms-public-ui\.mjs"><\/script>/, '');
+      res.end(html.replace('</body>', injection + '</body>'));
     } else {
       fs.createReadStream(target).pipe(res);
     }

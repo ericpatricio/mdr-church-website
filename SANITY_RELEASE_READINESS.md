@@ -542,3 +542,8 @@ The two homepages were regenerated from the source generator. The complete relea
 ### Remaining limitations
 
 No known Critical or Major defect remains from these targeted findings. Actual Safari/WebKit, physical iOS/Android touch and screen-reader speech/announcement testing (NVDA/VoiceOver/TalkBack) still need manual acceptance. Browser accessibility-tree and trusted input checks do not replace that testing or a complete accessibility audit. Storage-blocked browsers retain pause only until navigation/reload, as described above. The existing 13 moderate CLI/build dependency advisories remain under preparation-only acceptance; no dependency remediation or production-risk acceptance is implied. No release action is authorized by this correction.
+
+
+## Authorized church pilot activation - 2026-11-19
+
+Production activation is now reproducible: content/event-source.mjs selects Sanity for normal builds, reusing the existing anonymous published-only bootstrap. Exactly four Home/Eventos outputs are activated; the file catalog remains empty. Target remains u2olnd8u/poc. Shared preparation supports already-active and file-mode pages without duplicate feeds. New regressions verify default rebuild activation, explicit file-mode rollback, safe re-preparation and duplicate rejection. Design and artwork are unchanged. PRODUCTION_RELEASE.md documents the durable corrective-commit rollback; GUIA_ADMIN_EVENTOS.md provides Spanish nontechnical pilot instructions. Earlier file-only preparation notes are historical. Exact activation/merge/Pages references and live smoke-test evidence are recorded in the final release report after publication. No billing, membership or dataset changes are required.

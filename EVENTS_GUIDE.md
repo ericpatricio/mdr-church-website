@@ -1,3 +1,7 @@
+# Estado del piloto: eventos publicados desde Sanity
+
+Para administrar eventos del sitio publico use Studio y [GUIA_ADMIN_EVENTOS.md](GUIA_ADMIN_EVENTOS.md). No edite este catalogo de archivos para publicar en modo Sanity. Las instrucciones historicas de archivos que siguen se conservan para el modo de respaldo; vea [PRODUCTION_RELEASE.md](PRODUCTION_RELEASE.md).
+
 # Publishing MDR events in VS Code
 
 Events have one source of truth: the `events` array in `content/site.mjs`.
