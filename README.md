@@ -3,8 +3,10 @@
 Bilingual static website for Iglesia de Dios Manantial de Restauración. A small
 Node generator produces 20 localized pages: six main pages and four ministry
 detail pages in Spanish and English. GitHub Pages serves committed HTML under
-`/mdr-church-website/`. There is no frontend framework, backend, CMS, database or
-package dependency to install.
+`/mdr-church-website/`. The default file-based website needs no frontend framework,
+backend or package installation. The separate Sanity Studio is deployed; an
+opt-in website release candidate is documented in
+[SANITY_RELEASE_READINESS.md](SANITY_RELEASE_READINESS.md).
 
 ## Local development in VS Code
 
@@ -66,7 +68,7 @@ New content and corrections still require rebuilding and approved deployment.
 
 ## Branch and review workflow
 
-Pastoral release branch: `development/pastoral-file-release`.
+Current implementation branch: `development/sanity-events-poc`.
 Check `git status` and `git branch --show-current` before editing. Work on a
 dedicated development branch; do not commit directly to `main`. Run all three
 checks above, review both languages locally and inspect the VS Code Source
@@ -74,9 +76,8 @@ Control diff. Commit source, flyers and generated HTML together in focused chang
 After owner approval to push, publish the development branch and open a GitHub
 pull request targeting `main`. Merge and deployment require separate approval.
 
-The owner authorized committing, merging and deploying this file-based release on
-November 17, 2026 for pastoral review. The unfinished Sanity proof of concept is
-excluded. Historical release notes in AUDIT.md and QA.md describe earlier work.
+No push, merge or deployment is authorized for this refactor. Historical release
+notes in AUDIT.md and QA.md describe earlier work, not current authorization.
 
 ## Validation limits
 

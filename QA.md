@@ -1,16 +1,20 @@
-# Pastoral file-based release ? November 17, 2026
-
-Owner authorized commit, merge and GitHub Pages deployment for pastoral review.
-Build, static validation (20 pages, 802 local references, 142 images), automated
-tests and plain git diff --check passed in the isolated release worktree.
-The event catalog is empty. Sanity Studio, CMS adapters, account configuration
-and all fictional CMS records are excluded. The unfinished POC remains local.
-Browser viewport/console verification remains incomplete as documented below;
-the accepted manual bilingual event exercise covered publishing/filtering/cancellation.
-
----
-
 # QA — professional pastoral redesign, October 28, 2026
+
+## Local Sanity POC usability exercise — November 18, 2026
+
+The administrator manually verified bilingual draft preview and exclusion,
+publication on both Eventos pages and both homepages, corrected New York times,
+unpublished edit isolation, flyer replacement/republish, cancellation display,
+homepage exclusion and deletion. All four local listings returned to empty.
+An anonymous API check confirmed the published poc feed is empty; the file-based
+catalog is empty too. Uploaded test assets were intentionally left intact.
+
+A Chrome fetch receiver bug found during this exercise was reproduced by a
+regression test and fixed locally. Website build, static validation, automated
+tests and Studio typecheck were rerun after the exercise. This does not establish
+full viewport, keyboard, screen-reader or phone coverage. The production website
+remains on the separately deployed file-based release; no CMS deployment or
+production adoption is authorized by the exercise.
 
 ## Final QA corrections — November 17, 2026
 
@@ -114,3 +118,139 @@ This revision is prepared on development/stock-content-enhancements for review. 
 Owner approved applying the latest MDR visuals while retaining the bilingual site. The homepage now has a 90%-width, 90vh background slideshow beginning with the supplied waterfall image, followed by the supplied worship, intercession and Bible-study images. No previous/next/pause controls are rendered; rotation pauses during hover/focus and is disabled for reduced motion. Navbar logo renders 10% larger. The first-visit invitation uses generated illustrative welcome imagery, not a photo of MDR members.
 
 Build, all 18 bilingual-page link/asset checks, catalog and interaction tests, and JavaScript syntax checks passed. This revision is authorized for merge and deployment by the owner's request in the current chat.
+
+## Targeted mobile, hero and ministry-logo corrections — November 18, 2026
+
+Local changes on development/sanity-events-poc; nothing committed, pushed,
+merged or deployed. Existing event/CMS work and production settings preserved.
+
+Changes:
+- Full-width hero: removed 90% width, maximum width, rounded card margin and
+  fixed viewport height. Content now determines height above responsive minima;
+  dedicated bottom space prevents the slide controls overlapping the copy.
+- New supplied assets/waterfall-realistic.jpg is the first slide in both languages.
+  Existing waterfall asset retained. HTML text, links and other slides preserved.
+- Added labelled native previous/next buttons (48 by 48px), visible keyboard
+  focus and a polite slide counter. Previous/next wrap around. Autoplay restored at the owner?s request: eight-second rotation pauses on
+  hover, keyboard focus, hidden tabs and reduced-motion preference.
+  Reduced-motion behavior remains; no swipe handler/dependency introduced.
+- Men’s original 960x768 PNG retained. A circular wrapper compensates for its
+  transparent padding, preserving the artwork’s aspect ratio and making its
+  visible diameter consistent with the other logos. Applied on Home, About,
+  Ministries and the men’s detail page in both languages.
+- Mobile language targets widened to 44px; ministry copy can shrink/wrap.
+
+Files edited for this task: assets/style.css, assets/app.js, scripts/build.mjs,
+scripts/check.mjs, scripts/test-ui.mjs and this QA.md. Generated bilingual index,
+nosotros, ministerios and ministerio-caballeros pages were refreshed. The supplied
+waterfall image was already present and was not modified.
+
+Verification:
+- npm.cmd run build: passed, 20 bilingual pages.
+- npm.cmd run check: passed, 802 local references and 142 images; includes new
+  checks for first-slide asset, labelled arrows and normalized men’s logo wrapper.
+- npm.cmd test: passed all existing suites plus previous/next, wraparound,
+  first-slide, photo/announcement-state and eight-second autoplay/pause regressions.
+- git diff --check: passed (existing LF/CRLF conversion warnings only).
+- Browser automation host unavailable; native Chrome fallback worked using
+  responsive emulation at height 844 and widths 390, 768 and 1440 CSS pixels.
+- Spanish and English homepages visually inspected at all three widths. At each,
+  document scrollWidth equalled innerWidth and hero width equalled viewport width.
+  No sampled text overlap/clipping. Both hero action links passed element hit
+  checks. Loaded-image checks reported no broken images in sampled views.
+- At 390px, native click advanced the slide; Space advanced it again, Shift+Tab
+  and Enter activated the previous arrow. White focus outline was visible.
+  Announcement and photo transitions retained the hero footprint.
+- English ministry cards inspected at all three widths: all four logo frames
+  measured 60x60 at 390, 52x52 at 768 and 64x64 at 1440. Men’s artwork visually
+  matches their scale without distortion. Spanish uses the same markup/CSS;
+  its ministry section was not separately scrolled through at every width.
+- Desktop ES-to-EN language navigation passed. English phone menu opened, Escape
+  closed it and restored visible focus to its button.
+- No application JavaScript errors observed in sampled console reads. One QA
+  diagnostic expression was accidentally run on the Visit page, which has no
+  hero; its null-reference error was diagnostic-only. The final reloaded Home
+  console had zero messages. Chrome’s two pre-existing Issues notices were not
+  investigated as part of these targeted corrections.
+
+Remaining manual verification: physical-phone touch activation and landscape
+behavior, Safari/iOS and Android browser coverage, screen-reader slide-status
+announcements and a complete image-scroll sweep. These are emulated Chrome
+results, not physical-device certification. The supplied JPEG is about 2.85 MB;
+loading can be slower under throttled mobile networking. It was preserved exactly
+as supplied. Existing Sanity preproduction acceptance gaps remain in
+SANITY_PREPRODUCTION_QA.md; this task does not grant production approval.
+
+## Hero final polish — November 18, 2026
+
+This entry supersedes the earlier waterfall-size limitation. Original
+assets/waterfall-realistic.jpg remains unchanged; derived files only were added.
+No ministry-logo rules, event/CMS logic or production configuration were changed.
+
+| Image | Dimensions | Bytes | Reduction from original |
+| --- | --- | ---: | ---: |
+| Original JPEG (preserved) | 3600x2400 | 2,853,436 | — |
+| Mobile WebP | 960x640 | 159,514 | 94.4% |
+| Desktop/tablet WebP | 1920x1280 | 621,856 | 78.2% |
+| JPEG fallback | 1920x1280 | 583,521 | 79.6% |
+
+Picture markup selects the mobile WebP through 600px, the larger WebP above that,
+and an optimized JPEG img fallback for browsers without WebP. Priority loading,
+alt text, intentional cover crop and explicit dimensions remain. Original pixels
+were resized/compressed locally with a temporary Sharp install outside the repo;
+no runtime or package dependency was added. The mobile source is deliberately
+bounded at 960px to favor loading speed; high-density phones may show less fine
+foliage detail than the original. No real-network timing benchmark is claimed.
+
+Added a native, visibly labelled Pause/Play control (Pausar/Reanudar in Spanish),
+104x48 CSS pixels, with localized accessible action labels and visible focus.
+Manual pause persists through timer ticks and arrow use. Explicit Play resumes
+rotation without moving keyboard focus. Hover pause applies to hover-capable
+pointers, avoiding sticky touch hover. Normal focus inside the hero still pauses;
+a deliberate Play action permits rotation while that same button retains focus,
+until it blurs. Eight-second interval, arrows, slide counter and hidden-tab pause
+remain. Reduced motion stops automatic rotation by default; deliberate Play can
+opt in, while reduced-motion CSS continues to disable animation. A subsequent
+preference change clears that opt-in. Automatic slide changes suppress live
+counter announcements; manually paused states retain the polite counter.
+
+Verification:
+- Website build: passed, 20 bilingual pages.
+- Static validation: passed, including picture variants/fallback, original source,
+  localized playback control and existing GitHub Pages path checks.
+- Automated tests: passed, including manual pause, arrows while paused, resume,
+  eight-second timer, focus/hover/hidden/reduced-motion states, preference changes,
+  and explicit touch Play despite sticky hover and retained control focus.
+- git diff --check: passed after normalizing documentation line endings.
+- Native Chrome fallback worked (browser automation host remained unavailable).
+  Spanish and English homepages inspected at 390, 768 and 1440px, height 844.
+  In all six cases document scrollWidth equalled viewport width and hero width;
+  controls were within the hero and no sampled text overlap was seen.
+- Chrome currentSrc confirmed 960 WebP at 390 and 1920 WebP at 768/1440, loaded
+  successfully in both languages. Existing hero design/crop remained intact.
+- Spanish click, Space and Enter toggled playback with visible focus. Manual Pause
+  retained the same slide through an idle timer tick; arrows remained usable.
+  After the sticky-hover correction, English phone emulation advanced slides after
+  explicit Play even with its button retaining touch focus. Pause/Play labels and
+  localized accessible names were visible in the native accessibility tree.
+- No application JavaScript error was observed in the sampled hero console views.
+
+Remaining checks: physical iOS/Android touch and Safari, screen-reader spoken
+announcements, and actual fallback selection in a browser lacking WebP support.
+The fallback file exists and decodes, but this pass used WebP-capable Chrome.
+Prior Sanity acceptance gaps remain separate; this does not authorize production.
+
+Files for this polish: assets/app.js, assets/style.css, scripts/build.mjs,
+scripts/check.mjs, scripts/test-ui.mjs, generated es/index.html and en/index.html,
+three optimized waterfall variants and this report. No commit, push, merge or
+deployment was performed.
+
+
+### Owner follow-up: remove pause/play control
+
+Removed the visible control and its manual playback state from both generated
+homepages. Optimized images, arrows, counter and eight-second autoplay remain.
+Hover-capable pointer, keyboard-focus, hidden-tab and reduced-motion pauses remain;
+reduced motion now has no manual override. Updated regression/static checks pass.
+Build, validation, automated tests and git diff --check passed. No new browser
+viewport pass was performed for this removal. Nothing committed or deployed.
