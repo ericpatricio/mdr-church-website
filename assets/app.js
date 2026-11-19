@@ -33,7 +33,7 @@ function applyFilter(category, label, group = document, now = Date.now()) {
   const status = group.querySelector('[data-filter-status]');
   if (status) status.textContent = `${status.dataset.prefix}: ${visible} · ${label}`;
   const empty = group.querySelector('[data-empty-events]');
-  if (empty) empty.hidden = visible > 0;
+  if (empty) empty.hidden = visible > 0 || group.dataset?.cmsUnavailable === 'true';
 }
 function refreshEvents() {
   if (eventGroups.length) {
@@ -49,6 +49,7 @@ filters.forEach(button => button.addEventListener('click', () => {
   refreshEvents();
 }));
 refreshEvents();
+document.addEventListener('mdr-events-updated', refreshEvents);
 if (eventGroups.length) {
   setInterval(refreshEvents, 30_000);
   document.addEventListener('visibilitychange', refreshEvents);
@@ -70,16 +71,58 @@ sermonSearch?.addEventListener('input', () => {
   if (empty) empty.hidden = visible > 0;
 });
 
-// Hero rotation: no visible controls, as requested by the site owner.
+// Arrows and eight-second autoplay share the same slide state.
 const hero = document.querySelector('[data-hero]');
 if (hero) {
   const slides = [...hero.querySelectorAll('.hero-slide')];
+  const status = hero.querySelector('[data-hero-status]');
+  const playback = hero.querySelector('[data-hero-playback]');
+  const playbackIcon = hero.querySelector('[data-hero-playback-icon]');
+  // Remember the visitor's pause choice through reloads/language changes in this tab.
+  let manuallyPaused = false;
+  try { manuallyPaused = sessionStorage.getItem('mdr-hero-paused') === 'true'; } catch {}
+
+  function updatePlayback() {
+    if (!playback) return;
+    playback.hidden = false;
+    const label = manuallyPaused ? playback.dataset.playLabel : playback.dataset.pauseLabel;
+    playback.setAttribute('aria-label', label);
+    playback.setAttribute('title', label);
+    playbackIcon?.setAttribute('d', manuallyPaused ? 'M8 4l12 8-12 8z' : 'M6 4h4v16H6zM14 4h4v16h-4z');
+  }
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const hoverCapable = matchMedia('(hover: hover)');
   let current = 0;
-  setInterval(() => {
-    if (reduced.matches || document.hidden || hero.matches(':hover') || hero.contains(document.activeElement)) return;
-    current = (current + 1) % slides.length;
+  function updateAnnouncements() {
+    // Automatic changes should not repeatedly interrupt screen-reader speech.
+    status?.setAttribute('aria-live', manuallyPaused || reduced.matches ? 'polite' : 'off');
+  }
+  function showSlide(index) {
+    if (!slides.length) return;
+    current = (index + slides.length) % slides.length;
     hero.dataset.slideType = slides[current].dataset.slideType;
     slides.forEach((slide, index) => { slide.hidden = index !== current; });
+    if (status) status.textContent = `${current + 1} / ${slides.length}`;
+  }
+  hero.querySelector('[data-hero-prev]')?.addEventListener('click', () => showSlide(current - 1));
+  hero.querySelector('[data-hero-next]')?.addEventListener('click', () => showSlide(current + 1));
+  playback?.addEventListener('click', () => {
+    manuallyPaused = !manuallyPaused;
+    try {
+      if (manuallyPaused) sessionStorage.setItem('mdr-hero-paused', 'true');
+      else sessionStorage.removeItem('mdr-hero-paused');
+    } catch {} // In-memory pause still works when browser storage is unavailable.
+    updatePlayback();
+    updateAnnouncements();
+  });
+  updatePlayback();
+  reduced.addEventListener('change', updateAnnouncements);
+  updateAnnouncements();
+  showSlide(0);
+  setInterval(() => {
+    const focused = hero.contains(document.activeElement);
+    if (manuallyPaused || reduced.matches || document.hidden ||
+      (hoverCapable.matches && hero.matches(':hover')) || focused) return;
+    showSlide(current + 1);
   }, 8000);
 }

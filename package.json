@@ -6,6 +6,8 @@
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
     "dev": "node scripts/serve.mjs",
+    "dev:poc": "node scripts/serve.mjs --cms-poc",
+    "prepare:cms": "node scripts/prepare-cms-release.mjs",
     "test": "node scripts/test.mjs"
   }
 }
