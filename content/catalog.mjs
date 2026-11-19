@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 
-export const EVENT_TIME_ZONE = 'America/New_York';
+import { EVENT_TIME_ZONE, eventStatus, validEventDate, upcomingEvents } from '../assets/event-model.mjs';
+export { EVENT_TIME_ZONE, eventStatus, validEventDate, upcomingEvents };
 const text = value => typeof value === 'string' && value.trim().length > 0;
 const bilingual = value => value && text(value.es) && text(value.en);
 const validDate = value => text(value) && Number.isFinite(Date.parse(value));
@@ -14,17 +15,7 @@ const https = value => {
 };
 const localImage = value => !value || (text(value) && /^[a-zA-Z0-9_/-]+\.(webp|png|jpe?g)$/i.test(value) && !value.startsWith('/') && !value.includes('..'));
 const requireField = (ok, message) => { if (!ok) throw new Error(message); };
-export const eventStatus = event => event.status !== undefined ? event.status : (event.verified === true ? 'published' : 'draft');
 
-export function validEventDate(value) {
-  if (!text(value) || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}$/.test(value) || !validDate(value)) return false;
-  const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
-    timeZone: EVENT_TIME_ZONE, year: 'numeric', month: '2-digit', day: '2-digit',
-    hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23',
-  }).formatToParts(new Date(value)).map(part => [part.type, part.value]));
-  // Round-trip the wall time to reject DST gaps, impossible dates and wrong offsets.
-  return `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}:${parts.second}` === value.slice(0, 19);
-}
 
 export function validateRecords(events, sermons) {
   const ids = new Set();
@@ -70,13 +61,6 @@ export function validateRecords(events, sermons) {
     requireField(bilingual(sermon.title) && text(sermon.speaker) && validDate(sermon.date), 'Verified messages need a bilingual title, speaker and date.');
     requireField(https(sermon.url) && localImage(sermon.image), 'Verified messages need an HTTPS recording URL and a local thumbnail path.');
   }
-}
-export function upcomingEvents(records, now = new Date(), { includeCancelled = true } = {}) {
-  return records.filter(record => {
-    const status = eventStatus(record);
-    return (status === 'published' || (includeCancelled && status === 'cancelled'))
-      && Date.parse(record.end || record.start) > +now;
-  }).sort((a, b) => Date.parse(a.start) - Date.parse(b.start));
 }
 export function publishedSermons(records) {
   return records.filter(record => record.verified === true).sort((a,b)=>Date.parse(b.date)-Date.parse(a.date));

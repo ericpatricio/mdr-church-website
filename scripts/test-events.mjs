@@ -82,7 +82,7 @@ try {
   for (const lang of ['es', 'en']) fs.mkdirSync(path.join(temporary, lang));
   const site = path.join(temporary, 'content/site.mjs');
   fs.writeFileSync(site, fs.readFileSync(site, 'utf8').replace('export const events = [];', `export const events = ${JSON.stringify([event, cancelled, draft])};`));
-  execFileSync(process.execPath, ['scripts/build.mjs'], { cwd: temporary });
+  execFileSync(process.execPath, ['scripts/build.mjs', '--file-events'], { cwd: temporary });
   execFileSync(process.execPath, ['scripts/check.mjs'], { cwd: temporary });
   for (const lang of ['es', 'en']) {
     const homepage = fs.readFileSync(path.join(temporary, lang, 'index.html'), 'utf8');

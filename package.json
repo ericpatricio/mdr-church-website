@@ -6,6 +6,9 @@
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
     "dev": "node scripts/serve.mjs",
-    "test": "node scripts/test.mjs"
+    "dev:poc": "node scripts/serve.mjs --cms-poc",
+    "prepare:cms": "node scripts/prepare-cms-release.mjs",
+    "test": "node scripts/test.mjs",
+    "build:file": "node scripts/build.mjs --file-events"
   }
 }

@@ -40,6 +40,17 @@ for (const lang of ['es','en']) for (const page of pages) {
     images++;
   }
   if(page==='index') {
+    assert(/class="hero-slide"[^>]*>\s*<picture><source[^>]*srcset="\.\.\/assets\/waterfall-realistic-960\.webp"/.test(html), `${file}: first hero slide must use optimized supplied waterfall`);
+    assert(html.includes('srcset="../assets/waterfall-realistic-1920.webp"'));
+    assert(html.includes('src="../assets/waterfall-realistic-1920.jpg"'));
+    for (const asset of ['waterfall-realistic.jpg', 'waterfall-realistic-960.webp', 'waterfall-realistic-1920.webp', 'waterfall-realistic-1920.jpg']) assert(fs.existsSync(path.join('assets', asset)), `${file}: missing waterfall variant ${asset}`);
+    assert(html.includes('data-hero-playback hidden aria-controls="hero-slides"'), `${file}: accessible manual playback control`);
+    assert(html.includes(lang === 'es' ? 'Pausar presentaci\u00f3n' : 'Pause slideshow'));
+    assert(html.includes(lang === 'es' ? 'Reanudar presentaci\u00f3n' : 'Resume slideshow'));
+    assert(html.includes('data-hero-playback-icon'));
+    assert(html.includes('data-hero-prev aria-controls="hero-slides" aria-label="'));
+    assert(html.includes('data-hero-next aria-controls="hero-slides" aria-label="'));
+    assert(html.includes('ministry-logo ministry-logo-men'));
     assert(html.includes(lang==='es'?'Una iglesia de familia para la familia.':'A family church for the family.'));
     assert(html.includes('nosotros.html#liderazgo'));
     assert(html.includes('ministerio-kidzz.html'));

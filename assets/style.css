@@ -811,6 +811,17 @@ main:focus {
 .event p {
   margin-block: 16px;
 }
+/* Keep dates in normal text flow instead of shrinking each time into a flex column. */
+.event .eyebrow {
+  display: block;
+  position: relative;
+  padding-inline-start: 33px;
+}
+.event .eyebrow:before {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.7em;
+}
 .event details {
   margin-top: 20px;
 }
@@ -1477,6 +1488,21 @@ main:focus {
   object-fit: contain;
   margin-bottom: 22px;
 }
+.ministry-logo-men {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  /* The supplied PNG's circular mark occupies about 52% of its width. */
+}
+.ministry-logo-men > img {
+  position: absolute;
+  width: 192%;
+  max-width: none;
+  height: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 .ministry-feature-copy .ministry-logo {
   width: 64px;
   height: 64px;
@@ -1654,12 +1680,13 @@ main:focus {
   isolation: isolate;
   display: flex;
   align-items: center;
-  width: 90%;
-  height: 90vh;
-  min-height: 0;
-  margin: 24px auto 0;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  min-height: clamp(600px, 80svh, 860px);
+  margin: 0;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 0;
   background: #031c34;
 }
 .hero-background {
@@ -1671,6 +1698,7 @@ main:focus {
   position: absolute;
   inset: 0;
 }
+.hero-slide picture,
 .hero-slide img {
   width: 100%;
   height: 100%;
@@ -1689,12 +1717,16 @@ main:focus {
 }
 .hero-copy {
   color: white;
-  padding: 5% 7%;
-  max-width: 830px;
+  width: 100%;
+  min-width: 0;
+  padding: 72px max(24px, calc((100vw - 1240px) / 2)) 128px;
+  max-width: none;
+  overflow-wrap: break-word;
 }
 .hero-copy h1 {
-  font-size: clamp(40px, min(6vw, 10vh), 84px);
+  font-size: clamp(40px, 5vw, 72px);
   max-width: 720px;
+  text-wrap: balance;
 }
 .hero-copy .lead {
   color: #e4eff8;
@@ -1726,6 +1758,44 @@ main:focus {
 .hero-slide:not([hidden]) {
   animation: mdr-hero-fade 0.8s ease-out;
 }
+.hero-controls {
+  position: absolute;
+  bottom: 28px;
+  right: max(24px, calc((100vw - 1240px) / 2));
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: white;
+}
+.hero-controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  width: 48px;
+  min-height: 48px;
+  border: 1px solid #d2e0eb;
+  border-radius: 50%;
+  color: white;
+  background: #082b4be6;
+  font-size: 24px;
+}
+.hero-controls button:hover {
+  background: #1685d8;
+}
+.hero-controls button:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+.hero-controls [role="status"] {
+  min-width: 46px;
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 4px;
+  background: #082b4be6;
+  font-size: 13px;
+}
 .invitation-image img[src$="primera-visita.webp"] {
   aspect-ratio: 4/5;
   object-position: center 30%;
@@ -1742,13 +1812,14 @@ main:focus {
   }
 }
 @media (max-width: 800px) {
+  .hero-controls {
+    gap: 8px;
+  }
   .hero {
-    width: 90%;
-    height: 90vh;
-    min-height: 0;
+    min-height: 640px;
   }
   .hero-copy {
-    padding: 8%;
+    padding: 56px 24px 120px;
   }
   .hero-copy h1 {
     font-size: clamp(36px, 8vw, 62px);
@@ -1763,11 +1834,19 @@ main:focus {
     flex-wrap: wrap;
   }
   .hero-actions .button {
-    flex: none;
+    flex: 0 1 auto;
+    min-height: 48px;
     white-space: normal;
   }
   .hero-copy .eyebrow {
     font-size: 10px;
+  }
+  .language-switch a {
+    width: 44px;
+  }
+  .ministry-feature-copy > div {
+    min-width: 0;
+    overflow-wrap: break-word;
   }
 }
 @media (max-height: 560px) {
@@ -1775,17 +1854,18 @@ main:focus {
     font-size: clamp(26px, 8vh, 45px);
   }
   .hero-copy {
-    padding: 20px 7%;
+    padding-top: 40px;
+    padding-bottom: 112px;
   }
   .hero-copy .lead {
-    font-size: 13px;
+    font-size: 16px;
     margin-top: 15px;
   }
   .hero-actions {
     margin-top: 15px;
   }
   .hero-actions .button {
-    min-height: 38px;
+    min-height: 48px;
     padding: 8px 16px;
   }
   .hero-copy .sunday-link {
