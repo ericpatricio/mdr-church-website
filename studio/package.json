@@ -6,7 +6,7 @@
     "dev": "sanity dev --host 127.0.0.1 --port 3333",
     "build": "sanity build",
     "typecheck": "tsc --noEmit",
-    "test": "node scripts/test-condition.mjs && node scripts/test-dependency-compat.mjs && node scripts/test-usability.mjs"
+    "test": "node scripts/test-condition.mjs && node scripts/test-dependency-compat.mjs && node scripts/test-usability.mjs && sanity exec scripts/test-native-validation.mjs"
   },
   "dependencies": {
     "@sanity/locale-es-es": "1.2.39",

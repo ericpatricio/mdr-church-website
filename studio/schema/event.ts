@@ -34,7 +34,10 @@ export const event = defineType({
   fields: [
     translated('title', 'Título'),
     // Legacy values remain stored and immutable. Sanity's document ID is the key.
-    defineField({name: 'slug', title: 'Identificador anterior', type: 'slug', hidden: true, readOnly: true}),
+    defineField({name: 'slug', title: 'Identificador anterior', type: 'slug', hidden: true, readOnly: true,
+      // Retained metadata, not event identity. Native document IDs own uniqueness.
+      options: {isUnique: () => true},
+    }),
     translated('description', 'Descripción del evento', true),
     translated('details', 'Detalles adicionales (opcional)', true, true),
     defineField({name: 'start', title: 'Inicio', type: 'datetime', fieldset: 'schedule',
