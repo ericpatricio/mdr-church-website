@@ -1,3 +1,5 @@
+> MDR-CMS-001A: the hidden legacy-slug uniqueness blocker identified at 8439903 is corrected by d33b99ed276d6b041cd235a477d3f886caa54ee4. See MDR_CMS_001A_REPORT.md for actual native-validator evidence, updated test counts and remaining approval gates. This earlier report is historical; no production deployment is authorized.
+
 # MDR-CMS-001 — corrective release candidate
 
 Date: November 25, 2026. Status: **CONDITIONAL PASS — local candidate; production approval required**.

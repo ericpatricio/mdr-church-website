@@ -1,3 +1,5 @@
+> MDR-CMS-001A release gate: d33b99ed276d6b041cd235a477d3f886caa54ee4 removes only deprecated event.slug uniqueness through a supported field option; stored slugs and native document identity remain. The actual native-validator suite now runs in Studio tests and PR validation. See MDR_CMS_001A_REPORT.md and PR #7 for the final candidate/CI and outstanding authenticated/device acceptance. Website first, verify Pages, matching Studio second, then only explicitly authorized live acceptance. Nothing in this note authorizes merge, deployment or production test records.
+
 > MDR-CMS-001 deployment warning: release the compatible website adapter before the updated Studio. New events may omit legacy slugs/details, which the old adapter rejects. Do not blindly roll the adapter back after new records exist. Follow MDR_CMS_001_REPORT.md for the approval gate and safe rollback.
 
 # MDR pilot release and rollback
