@@ -2,8 +2,9 @@
 
 Status: historical POC instructions. Studio is deployed at
 https://mdr-eventos.sanity.studio/ and administrator access has been confirmed.
-The public website remains file-based. See [SANITY_RELEASE_READINESS.md](SANITY_RELEASE_READINESS.md)
-for the current local-only website release candidate, approval gates and rollback.
+The public website has used published Sanity events since the approved November 19 pilot release.
+For the November 25 corrective candidate, see [MDR_CMS_001_REPORT.md](MDR_CMS_001_REPORT.md).
+POC exercises below are historical, not current production publishing instructions.
 Do not run `studio/scripts/verify-live.mjs` against the intended release dataset:
 that historical POC script creates and publishes fictional fixtures.
 

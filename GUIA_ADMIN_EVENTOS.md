@@ -1,18 +1,49 @@
 # Eventos MDR: guía para la iglesia
 
+**Versión candidata MDR-CMS-001.** Estas mejoras necesitan aprobación y despliegue antes de aparecer en Studio. No se han cambiado los eventos existentes.
+
 Studio: https://mdr-eventos.sanity.studio/
 Sitio: https://ericpatricio.github.io/mdr-church-website/
 
-1. **Entrar.** Acepte la invitación de Sanity enviada a su correo. Abra Studio e inicie sesión con el mismo correo y método de acceso de la invitación. No necesita GitHub, VS Code ni conocimientos de programación. Si no aparece MDR/Eventos, avise al administrador técnico; no cree otro proyecto.
-2. **Crear.** En Eventos, pulse crear un Evento. Complete título, descripción y detalles tanto en Español como en Inglés. Use Generar para el identificador; reviselo antes de publicar.
-3. **Fecha y lugar.** Introduzca inicio y, preferiblemente, fin con la zona America/New_York. Compruebe la hora local y el horario de verano. Sin hora de fin, el evento desaparece al comenzar. Seleccione categoría y complete nombre y dirección del lugar. Use solo informacion confirmada por la iglesia.
-4. **Volante.** Suba JPG, PNG o WebP, máximo 5 MB. Complete su descripción accesible en ambos idiomas. No suba informacion privada: el archivo es accesible por URL aun cuando el evento este en borrador.
-5. **Borrador.** Studio guarda automáticamente mientras escribe. Espere la confirmación de guardado; NO pulse Publicar hasta terminar. Los cambios sin publicar no aparecen en las listas públicas. No cierre la página si hay un error de conexión o cambios pendientes.
-6. **Vista previa.** Abra Vista previa y revise ambos idiomas, fecha, hora, lugar y volante. Resuelva todos los mensajes de validación antes de continuar.
-7. **Publicar.** Mantenga Programado y pulse Publicar. Abra Eventos en ES y EN y los dos inicios del sitio. En una página nueva debe aparecer al cargar; una página que ya estaba abierta puede tardar alrededor de 60-70 segundos en actualizar. No necesita reconstruir ni desplegar el sitio. Los inicios muestran solo los tres próximos eventos elegibles; Eventos muestra el resto.
-8. **Corregir o cancelar.** Edite y vuelva a pulsar Publicar; guardar un borrador no cambia lo publicado. Para cancelar, seleccione Cancelado en Estado del encuentro y pulse Publicar. Se muestra como cancelado en Eventos hasta su fin y desaparece de próximos eventos del inicio. Para reemplazar el volante, cambielo, revise ambos idiomas y publique otra vez.
-9. **Eliminar y verificar.** Eliminar es para registros equivocados o de prueba: use la acción Eliminar y su confirmación. No elimine otros eventos ni archivos de la biblioteca. Compruebe las cuatro páginas; espere la actualización automatica. Los eventos vencidos dejan de mostrarse automáticamente.
+## Crear y guardar un borrador
 
-Si ve eventos temporalmente no disponibles, reintente mas tarde y avise al administrador técnico. Un aviso de datos desactualizados significa que el sitio no logro refrescar; no publique duplicados para solucionarlo.
+Entre con su propia cuenta invitada. En **Eventos → Todos los eventos y borradores**, cree un Evento. Studio guarda mientras escribe: espere la confirmación de guardado antes de cerrar. Si pierde conexión, no cierre con cambios pendientes.
 
-Se conservan dos cuentas: un administrador técnico y una persona autorizada de la iglesia. Use su propia cuenta; no comparta contraseñas. La invitación pendiente se acepta manualmente y no impide que el sitio funcione.
+1. **Información del evento.** Complete el título y la descripción en español e inglés. No tiene que crear un identificador ni pulsar Generar; el sistema identifica el evento automáticamente. Eventos con el mismo título siguen siendo registros diferentes.
+2. **Fecha y horario.** Indique **Inicio** y **Finalización**. Ambas fechas y horas son necesarias para publicar; la finalización debe ser posterior al inicio. El selector usa la hora de Nueva York / Florida y aplica el horario de verano. Compruebe especialmente la hora repetida del cambio de horario de noviembre.
+3. **Lugar del evento.** Viene seleccionado **En nuestra iglesia** con **Iglesia de Dios Manantial de Restauración — 4360 Monterey Rd, Kissimmee, FL 34758**. No necesita volver a escribir ni confirmar esos datos. Para un evento fuera de la iglesia, seleccione **Otra ubicación** y complete nombre del lugar y dirección. Al volver a nuestra iglesia se conserva la última ubicación alternativa para recuperarla si cambia de nuevo. Los eventos antiguos y duplicados conservan su ubicación; revísela antes de publicar.
+4. **Volante.** Suba JPG, PNG o WebP de máximo 5 MB. Describa brevemente la imagen en ambos idiomas para las personas que no puedan verla. No repita todo el texto del evento. Los archivos son públicos por URL incluso en borrador: no incluya información privada.
+5. **Información adicional**, solo si hace falta. Comunidad viene seleccionada; cambie a Culto especial cuando corresponda. Puede añadir detalles distintos de la descripción, inscripción HTTPS, fuente oficial y contacto verificado. Si añade detalles o contacto, complete ambos idiomas; si no hacen falta, déjelos vacíos. El contacto debe ser información aprobada para publicación.
+6. **Vista previa y publicación.** Abra Vista previa y revise ES/EN, horas, ubicación y volante. La vista previa no publica y también permite revisar un evento finalizado.
+
+## Publicar y comprobar
+
+Deje el estado **Programado**, resuelva los mensajes y pulse **Publicar**. Guardar un borrador no cambia lo publicado. Abra Eventos en ambos idiomas y los dos inicios. Las páginas abiertas se actualizan normalmente en unos 60–70 segundos; no necesita GitHub, VS Code, reconstrucciones ni ayuda técnica. Los inicios muestran los tres primeros eventos elegibles; Eventos muestra todos.
+
+## Corregir, extender o cancelar
+
+Abra el registro existente, cambie lo necesario, revise la vista previa y publique otra vez. Para reemplazar el volante, cambie la imagen y revise sus descripciones accesibles. Para **extender** el evento, ajuste Finalización y vuelva a publicar antes del vencimiento cuando sea posible. El sitio recibe la nueva hora mediante su actualización normal; una página sin conexión no puede recibir una extensión nueva.
+
+Para cancelar, seleccione **Cancelado** y pulse **Publicar**. El evento sale de los inicios y aparece marcado como cancelado en Eventos hasta su finalización. No cambie su fecha solo para ocultarlo.
+
+## Finalización automática e historial
+
+Al llegar Finalización, el evento deja de aparecer automáticamente en las cuatro listas públicas, aunque la página esté abierta. No tiene que borrarlo ni despublicarlo. La tarjeta permanece visible durante el evento hasta esa hora. El registro y el volante siguen en Studio.
+
+Use **Próximos eventos**, **En curso**, **Finalizados**, **Cancelados** o **Todos los eventos y borradores** para encontrarlo. Finalizado se calcula a partir de la hora; no es un estado que deba mantener. Si una vista quedó abierta durante un cambio de hora, vuelva a abrir esa lista. Los borradores conservan las indicaciones nativas de publicación de Sanity.
+
+Un evento antiguo sin finalización sigue la política anterior: desaparece al comenzar. Antes de volver a publicarlo, añada una finalización real confirmada. No se inventan fechas ni se cambian automáticamente registros antiguos.
+
+## Resolver errores
+
+- **Falta contenido:** complete los dos idiomas indicados.
+- **Finalización no válida:** indique una hora posterior al inicio, revisando día y horario de verano.
+- **Ubicación incompleta:** en Otra ubicación, complete nombre y dirección. Si corresponde a la iglesia, seleccione En nuestra iglesia.
+- **Volante no comprobado:** revise formato/tamaño y conexión; reintente antes de publicar.
+- **Problema de identificador:** no cambie nombres técnicos. Reabra el evento; si continúa, contacte al administrador técnico.
+- **No aparece en el inicio:** compruebe que esté publicado, no cancelado ni finalizado, y que sea uno de los tres primeros. Compruebe también Eventos y espere la actualización.
+- **Datos desactualizados/no disponibles:** reintente y contacte al administrador técnico; no cree duplicados. Compruebe que la fecha/hora del teléfono sean correctas.
+
+Los navegadores suspendidos se ponen al día al volver. Un dispositivo sin conexión, con reloj incorrecto o con JavaScript desactivado puede no reflejar la situación actual: confirme la información antes de asistir.
+
+Eliminar es para registros equivocados y exige confirmación. No elimine eventos históricos ni archivos ajenos para limpiar las listas. Conserve las dos cuentas separadas: administrador técnico y representante autorizado. No comparta contraseñas.

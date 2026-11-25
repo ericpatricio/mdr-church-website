@@ -1,4 +1,6 @@
-﻿# MDR Sanity POC — targeted preproduction corrections
+> MDR-CMS-001 (2026-11-25): see MDR_CMS_001_REPORT.md for the latest local candidate, default-location tests, native-identity alternative and exact expiration verification. No production Studio/site deployment or real event mutation was performed in this correction.
+
+# MDR Sanity POC — targeted preproduction corrections
 
 Date: November 18, 2026. Branch: development/sanity-events-poc.
 

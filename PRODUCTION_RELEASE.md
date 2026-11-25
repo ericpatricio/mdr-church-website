@@ -1,3 +1,5 @@
+> MDR-CMS-001 deployment warning: release the compatible website adapter before the updated Studio. New events may omit legacy slugs/details, which the old adapter rejects. Do not blindly roll the adapter back after new records exist. Follow MDR_CMS_001_REPORT.md for the approval gate and safe rollback.
+
 # MDR pilot release and rollback
 
 Public website: https://ericpatricio.github.io/mdr-church-website/
