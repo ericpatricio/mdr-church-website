@@ -1,4 +1,5 @@
 import {CMS_PROJECT, CMS_DATASET} from './cms-config.mjs';
+import {eventIdentity} from './event-identity.mjs';
 // Keep existing POC script imports compatible while sharing the release target.
 export {CMS_PROJECT as POC_PROJECT, CMS_DATASET as POC_DATASET};
 export const STALE_LIMIT_MS = 5 * 60_000;
@@ -23,10 +24,11 @@ export function normalizeCmsEvents(records) {
   return records.map(record => {
     const fail = field => { throw new Error(`Evento ${record?._id || '?'}: revisa ${field}.`); };
     if (!record || record._type !== 'event' || !hasText(record._id) || record._id.includes('.')) fail('documento publicado');
-    const id = record.slug?.current;
+    const id = eventIdentity(record._id);
     if (!hasText(id) || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id) || ids.has(id)) fail('identificador único');
     ids.add(id);
-    for (const field of ['title', 'description', 'details', 'imageAlt']) if (!translated(record[field])) fail(field);
+    for (const field of ['title', 'description', 'imageAlt']) if (!translated(record[field])) fail(field);
+    if (record.details && (hasText(record.details.es) || hasText(record.details.en)) && !translated(record.details)) fail('details');
     if (!instant(record.start) || (record.end && (!instant(record.end) || Date.parse(record.end) <= Date.parse(record.start)))) fail('fechas');
     if (record.timeZone !== 'America/New_York') fail('zona horaria');
     if (!['scheduled', 'cancelled'].includes(record.condition)) fail('estado');
@@ -42,7 +44,7 @@ export function normalizeCmsEvents(records) {
     if (record.contact && !translated(record.contact)) fail('contacto bilingüe');
     return {
       id, status: record.condition === 'cancelled' ? 'cancelled' : 'published',
-      title: record.title, description: record.description, details: record.details,
+      title: record.title, description: record.description, details: translated(record.details) ? record.details : undefined,
       imageAlt: record.imageAlt, imageUrl: asset.url, start: record.start,
       end: record.end || undefined, timeZone: record.timeZone, category: record.category,
       venue: record.venue, location: record.location, contact: record.contact || undefined,

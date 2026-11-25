@@ -21,7 +21,9 @@ export function createEventReconciler(list, language, translations) {
         template.innerHTML = html;
         const node = template.content.firstElementChild;
         if (card) {
-          node.querySelector('details').open = card.node.querySelector('details').open;
+          const previousDetails = card.node.querySelector('details');
+          const nextDetails = node.querySelector('details');
+          if (previousDetails && nextDetails) nextDetails.open = previousDetails.open;
           card.node.replaceWith(node);
         }
         card = {html, node};

@@ -1,4 +1,5 @@
-export const EVENT_TIME_ZONE = 'America/New_York';
+import {church} from '../content/church.mjs';
+export const EVENT_TIME_ZONE = church.timeZone;
 const text = value => typeof value === 'string' && value.trim().length > 0;
 const validDate = value => text(value) && Number.isFinite(Date.parse(value));
 export const eventStatus = event => event.status !== undefined ? event.status : (event.verified === true ? 'published' : 'draft');
