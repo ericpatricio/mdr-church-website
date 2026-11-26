@@ -90,3 +90,35 @@ test('optional stored fields retained and publication guidance is current', () =
   assert(schema.description.includes('Al publicar')); assert(!schema.description.includes('todavía'));
   assert.match(field('end').description, /automáticamente/);
 });
+
+test('category is an uncollapsed native radio field immediately after title', () => {
+  const category = field('category'), titleIndex = schema.fields.findIndex(f => f.name === 'title');
+  assert.equal(schema.fields[titleIndex + 1], category);
+  assert.equal(category.fieldset, 'information');
+  assert.notEqual(schema.fieldsets.find(f => f.name === 'information').options?.collapsed, true);
+  assert.equal(category.title, 'Tipo de evento');
+  assert.equal(category.options.layout, 'radio');
+  assert.deepEqual(category.options.list, [
+    {title: 'Cultos y servicios', value: 'worship'}, {title: 'Comunidad', value: 'community'},
+  ]);
+  assert.equal(category.description, 'Selecciona el tipo de evento para que aparezca en la categoría correspondiente de la página web.');
+  assert.equal(category.components, undefined);
+});
+test('category has no new-event default and requires an intentional supported selection', () => {
+  assert.equal(Object.hasOwn(schema.initialValue(), 'category'), false);
+  assert.equal(field('category').initialValue, undefined);
+  for (const value of [undefined, null, '', 'all', 'other'])
+    assert.equal(validator('category')(value), 'Selecciona el tipo de evento: Cultos y servicios o Comunidad.');
+  for (const value of ['worship', 'community']) assert.equal(validator('category')(value), true);
+});
+test('opening and duplicating existing categories or switching location never resets them', () => {
+  for (const category of ['worship', 'community']) {
+    const source = {...location.newEventDefaults(), _id: 'existing-event', category};
+    const original = structuredClone(source), changes = [];
+    components.EventInput({value: source, onChange: p => changes.push(p), renderDefault: () => null});
+    assert.deepEqual(changes, []); assert.deepEqual(source, original);
+    const duplicate = {...structuredClone(source), _id: 'copy-event'};
+    assert.equal(duplicate.category, category);
+    assert(location.locationChanges(source, 'external').every(p => p.path[0] !== 'category'));
+  }
+});

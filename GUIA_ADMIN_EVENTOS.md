@@ -1,6 +1,6 @@
 # Eventos MDR: guía para la iglesia
 
-**Actualización candidata MDR-CMS-002.** El formato de 12 horas necesita aprobación y despliegue antes de aparecer en Studio y el sitio. No se han cambiado los eventos existentes.
+**Actualización candidata MDR-CMS-003.** La selección visible de Tipo de evento necesita aprobación y despliegue en Studio. No se han cambiado los eventos existentes.
 
 Studio: https://mdr-eventos.sanity.studio/
 Sitio: https://ericpatricio.github.io/mdr-church-website/
@@ -9,11 +9,11 @@ Sitio: https://ericpatricio.github.io/mdr-church-website/
 
 Entre con su propia cuenta invitada. En **Eventos → Todos los eventos y borradores**, cree un Evento. Studio guarda mientras escribe: espere la confirmación de guardado antes de cerrar. Si pierde conexión, no cierre con cambios pendientes.
 
-1. **Información del evento.** Complete el título y la descripción en español e inglés. No tiene que crear un identificador ni pulsar Generar; el sistema identifica el evento automáticamente. Eventos con el mismo título siguen siendo registros diferentes.
+1. **Información del evento.** Complete el título en español e inglés. A continuación, elija **Tipo de evento**: **Cultos y servicios** para actividades que deben aparecer bajo Cultos / Services, o **Comunidad** para Comunidad / Community. Los eventos nuevos no tienen una opción seleccionada: es necesario elegir antes de publicar. Los eventos existentes y duplicados conservan su tipo; revíselo. Todos / All reúne ambos tipos y no se selecciona en el CMS. Después complete la descripción en ambos idiomas. No tiene que crear un identificador ni pulsar Generar; el sistema identifica el evento automáticamente. Eventos con el mismo título siguen siendo registros diferentes.
 2. **Fecha y horario.** Indique **Inicio** y **Finalización**. Ambas fechas y horas son necesarias para publicar; la finalización debe ser posterior al inicio. El selector usa la hora de Nueva York / Florida y aplica el horario de verano. Inicio y Finalización muestran hora de 12 horas: **12:00 AM es medianoche** y **12:00 PM es mediodía**. Compruebe AM/PM antes de publicar. El control del calendario también puede seguir las preferencias regionales de hora del teléfono; no cambie la zona horaria para corregir su formato. Compruebe especialmente la hora repetida del cambio de horario de noviembre.
 3. **Lugar del evento.** Viene seleccionado **En nuestra iglesia** con **Iglesia de Dios Manantial de Restauración — 4360 Monterey Rd, Kissimmee, FL 34758**. No necesita volver a escribir ni confirmar esos datos. Para un evento fuera de la iglesia, seleccione **Otra ubicación** y complete nombre del lugar y dirección. Al volver a nuestra iglesia se conserva la última ubicación alternativa para recuperarla si cambia de nuevo. Los eventos antiguos y duplicados conservan su ubicación; revísela antes de publicar.
 4. **Volante.** Suba JPG, PNG o WebP de máximo 5 MB. Describa brevemente la imagen en ambos idiomas para las personas que no puedan verla. No repita todo el texto del evento. Los archivos son públicos por URL incluso en borrador: no incluya información privada.
-5. **Información adicional**, solo si hace falta. Comunidad viene seleccionada; cambie a Culto especial cuando corresponda. Puede añadir detalles distintos de la descripción, inscripción HTTPS, fuente oficial y contacto verificado. Si añade detalles o contacto, complete ambos idiomas; si no hacen falta, déjelos vacíos. El contacto debe ser información aprobada para publicación.
+5. **Información adicional**, solo si hace falta. Puede añadir detalles distintos de la descripción, inscripción HTTPS, fuente oficial y contacto verificado. Si añade detalles o contacto, complete ambos idiomas; si no hacen falta, déjelos vacíos. El contacto debe ser información aprobada para publicación.
 6. **Vista previa y publicación.** Abra Vista previa y revise ES/EN, horas, ubicación y volante. La vista previa no publica y también permite revisar un evento finalizado.
 
 ## Publicar y comprobar
@@ -36,11 +36,13 @@ Un evento antiguo sin finalización sigue la política anterior: desaparece al c
 
 ## Resolver errores
 
+- **Tipo de evento sin seleccionar:** marque Cultos y servicios o Comunidad, en Información del evento, debajo de los títulos.
 - **Falta contenido:** complete los dos idiomas indicados.
 - **Finalización no válida:** indique una hora posterior al inicio, revisando día y horario de verano.
 - **Ubicación incompleta:** en Otra ubicación, complete nombre y dirección. Si corresponde a la iglesia, seleccione En nuestra iglesia.
 - **Volante no comprobado:** revise formato/tamaño y conexión; reintente antes de publicar.
 - **Problema de identificador:** no cambie nombres técnicos. Reabra el evento; si continúa, contacte al administrador técnico.
+- **No aparece con el filtro esperado:** revise Tipo de evento. Para corregir un evento real, cambie su tipo, revise la vista previa y publique solo con la autorización correspondiente. Espere la actualización del sitio; no cree duplicados.
 - **No aparece en el inicio:** compruebe que esté publicado, no cancelado ni finalizado, y que sea uno de los tres primeros. Compruebe también Eventos y espere la actualización.
 - **Datos desactualizados/no disponibles:** reintente y contacte al administrador técnico; no cree duplicados. Compruebe que la fecha/hora del teléfono sean correctas.
 

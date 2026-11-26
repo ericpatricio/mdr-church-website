@@ -12,7 +12,7 @@ import {validateEnd, validateDocumentIdentity, optionalBilingual} from '../studi
 
 const words = value => ({es: value, en: value});
 const fixture = (overrides = {}) => ({_id: 'new-document-123', _type: 'event',
-  ...newEventDefaults(), title: words('¡NIÑOS, oración & FE!'), description: words('Descripción'),
+  ...newEventDefaults(), category: 'community', title: words('¡NIÑOS, oración & FE!'), description: words('Descripción'),
   start: '2026-12-25T00:00:00Z', end: '2026-12-25T02:00:00Z',
   imageAlt: words('Volante'), flyer: {url: 'https://cdn.sanity.io/images/u2olnd8u/poc/test.jpg', mimeType: 'image/jpeg', size: 100},
   ...overrides,
