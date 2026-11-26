@@ -4,3 +4,4 @@ import './test-events.mjs';
 import './test-cms.mjs';
 await import('./test-cms-corrections.mjs');
 await import('./test-event-time-format.mjs');
+await import('./test-event-categories.mjs');

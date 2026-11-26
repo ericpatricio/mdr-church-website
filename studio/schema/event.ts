@@ -33,6 +33,11 @@ export const event = defineType({
   ],
   fields: [
     translated('title', 'Título'),
+    defineField({name: 'category', title: 'Tipo de evento', type: 'string', fieldset: 'information',
+      description: 'Selecciona el tipo de evento para que aparezca en la categoría correspondiente de la página web.',
+      options: {layout: 'radio', list: [{title: 'Cultos y servicios', value: 'worship'}, {title: 'Comunidad', value: 'community'}]},
+      validation: rule => rule.custom(value => ['worship', 'community'].includes(value || '') || 'Selecciona el tipo de evento: Cultos y servicios o Comunidad.'),
+    }),
     // Legacy values remain stored and immutable. Sanity's document ID is the key.
     defineField({name: 'slug', title: 'Identificador anterior', type: 'slug', hidden: true, readOnly: true,
       // Retained metadata, not event identity. Native document IDs own uniqueness.
@@ -87,11 +92,6 @@ export const event = defineType({
       }),
     }),
     translated('imageAlt', 'Descripción accesible del volante'),
-    defineField({name: 'category', title: 'Categoría', type: 'string', fieldset: 'additional',
-      description: 'Comunidad viene seleccionada. Cambia a Culto especial solo cuando corresponda.',
-      options: {list: [{title: 'Comunidad', value: 'community'}, {title: 'Culto especial', value: 'worship'}]},
-      validation: rule => rule.custom(value => ['community', 'worship'].includes(value || '') || 'Selecciona una categoría.'),
-    }),
     defineField({name: 'registrationUrl', title: 'Enlace de inscripción (opcional)', type: 'url', fieldset: 'additional',
       validation: rule => rule.uri({scheme: ['https']}),
     }),

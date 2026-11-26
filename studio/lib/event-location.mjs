@@ -5,7 +5,7 @@ export function eventLocationMode(document = {}) {
   return document.venue === church.name && document.location === church.address ? 'church' : 'external';
 }
 export const newEventDefaults = () => ({
-  condition: 'scheduled', category: 'community', timeZone: church.timeZone,
+  condition: 'scheduled', timeZone: church.timeZone,
   locationChoice: 'church', venue: church.name, location: church.address,
 });
 // Only explicit selector changes emit atomic root form patches. No mount effects.

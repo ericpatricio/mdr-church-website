@@ -23,7 +23,7 @@ const asset = {_id: 'image-43d511aec40b8f5eb1f75d3da80ea2ef227f4c0a-150x150-jpg'
   _type: 'sanity.imageAsset', mimeType: 'image/jpeg', size: 3328,
   url: 'https://cdn.sanity.io/images/u2olnd8u/poc/43d511aec40b8f5eb1f75d3da80ea2ef227f4c0a-150x150.jpg'};
 const fixture = (id, extra = {}) => ({
-  _id: id, _type: 'event', ...event.initialValue(), title: words('Â¡NiÃ±os y oraciÃ³n!'),
+  _id: id, _type: 'event', ...event.initialValue(), category: 'community', title: words('Â¡NiÃ±os y oraciÃ³n!'),
   description: words('Contenido ficticio solo en memoria.'),
   start: '2099-01-01T16:00:00Z', end: '2099-01-01T18:00:00Z',
   imageAlt: words('Volante ficticio'), flyer: {_type: 'image', asset: {_type: 'reference', _ref: asset._id}}, ...extra,
@@ -139,5 +139,20 @@ test('hidden fields preserve valid backups; legacy missing technical fields rema
     delete record.locationChoice;
     assert(errors(await check(record)).some(marker => marker.path[0] === fieldName));
     assert.equal(event.fields.find(field => field.name === fieldName).hidden({document: record}), false);
+  }
+});
+
+test('missing category blocks actual native publication validation with the Spanish instruction', async () => {
+  const document = fixture('missing-category'); delete document.category;
+  const result = await check(document);
+  assert(errors(result).some(marker => marker.path[0] === 'category' &&
+    marker.message === 'Selecciona el tipo de evento: Cultos y servicios o Comunidad.'));
+  assert.equal(document.category, undefined);
+});
+test('native validation preserves both categories for existing and duplicate documents', async () => {
+  for (const category of ['worship', 'community']) {
+    const source = fixture('existing-' + category, {category});
+    const copy = {...structuredClone(source), _id: 'drafts.copy-' + category};
+    await valid(source); await valid(copy); assert.equal(copy.category, category);
   }
 });
