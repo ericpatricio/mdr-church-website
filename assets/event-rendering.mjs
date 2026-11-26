@@ -8,7 +8,7 @@ export function renderEventCard(event, lang, translations, hidden = false) {
   const esc = escapeHtml;
   const cancelled = eventStatus(event) === 'cancelled';
   const format = value => new Intl.DateTimeFormat(lang, {
-    dateStyle: 'long', timeStyle: 'short', timeZone: EVENT_TIME_ZONE,
+    dateStyle: 'long', timeStyle: 'short', hourCycle: 'h12', timeZone: EVENT_TIME_ZONE,
   }).format(new Date(value));
   const time = value => `<time datetime="${esc(value)}">${esc(format(value))}</time>`;
   return `<article class="event" data-category="${esc(event.category)}" data-expires="${esc(event.end || event.start)}"${hidden ? ' hidden' : ''}>
