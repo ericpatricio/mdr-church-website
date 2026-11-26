@@ -1,3 +1,5 @@
+> MDR-CMS-001 (2026-11-25): current corrective verification and device limitations are recorded in MDR_CMS_001_REPORT.md. Earlier reports below are historical snapshots, not the current deployed mode or hero-control decision.
+
 # QA — professional pastoral redesign, October 28, 2026
 
 ## Local Sanity POC usability exercise — November 18, 2026

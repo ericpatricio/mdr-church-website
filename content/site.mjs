@@ -1,12 +1,4 @@
-export const church = {
-  name: "Iglesia de Dios Manantial de Restauración",
-  address: "4360 Monterey Rd, Kissimmee, FL 34758",
-  maps: "https://maps.app.goo.gl/KA19Zd9LzB7ytgrU6",
-  phone: "+14073465036",
-  phoneDisplay: "(407) 346-5036",
-  instagram: "https://www.instagram.com/churchofgodmdr/",
-  pastors: "Raúl y Cindy Cardona",
-};
+export {church} from './church.mjs';
 // Keep historical events here. Only approved published/cancelled events are displayed.
 // See EVENTS_GUIDE.md; sermons continue to use verified: true.
 export const events = [];

@@ -1,3 +1,5 @@
+> MDR-CMS-001 (2026-11-25): see MDR_CMS_001_REPORT.md for corrective release readiness. Production remains the approved November 19 Sanity pilot until a separate approval. The older preparation statements below describe their dated stages.
+
 # MDR Sanity website release readiness
 
 November 18, 2026. Controlled preparation complete; deployment is not authorized.

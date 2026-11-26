@@ -17,7 +17,19 @@ export default defineConfig({
     esESLocale(),
     structureTool({
       title: 'Eventos',
-      structure: S => S.documentTypeList('event').title('Eventos'),
+      structure: S => S.list().title('Eventos').items([
+        S.listItem().title('Todos los eventos y borradores').child(S.documentTypeList('event').title('Todos los eventos y borradores')),
+        ...[
+          ['Próximos eventos', 'condition != "cancelled" && start > now() && coalesce(end, start) > now()'],
+          ['En curso', 'condition != "cancelled" && start <= now() && end > now()'],
+          ['Finalizados', 'coalesce(end, start) <= now()'],
+          ['Cancelados', 'condition == "cancelled"'],
+        ].map(([title, filter]) => S.listItem().title(title).child(
+          S.documentList().title(title).schemaType('event')
+            .apiVersion('2026-11-17').filter('_type == "event" && (' + filter + ')')
+            .defaultOrdering([{field: 'start', direction: 'desc'}]),
+        )),
+      ]),
       defaultDocumentNode: S => S.document().views([
         S.view.form().title('Editar'),
         S.view.component(EventPreview).title('Vista previa'),
@@ -29,6 +41,6 @@ export default defineConfig({
     comments: {enabled: false},
     // Native publishing/deletion preserve validation, confirmation and draft semantics.
     actions: actions => actions.filter(action =>
-      ['publish', 'delete', 'unpublish', 'discardChanges', 'restore'].includes(action.action || '')),
+      ['publish', 'delete', 'unpublish', 'discardChanges', 'restore', 'duplicate'].includes(action.action || '')),
   },
 })

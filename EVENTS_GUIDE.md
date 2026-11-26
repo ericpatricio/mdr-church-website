@@ -1,3 +1,5 @@
+> Current corrective candidate: see MDR_CMS_001_REPORT.md and GUIA_ADMIN_EVENTOS.md for automatic identifiers, default church location and required end times. Approval and website-first/Studio-second deployment are still pending; the historical file-mode instructions below remain rollback documentation.
+
 # Estado del piloto: eventos publicados desde Sanity
 
 Para administrar eventos del sitio publico use Studio y [GUIA_ADMIN_EVENTOS.md](GUIA_ADMIN_EVENTOS.md). No edite este catalogo de archivos para publicar en modo Sanity. Las instrucciones historicas de archivos que siguen se conservan para el modo de respaldo; vea [PRODUCTION_RELEASE.md](PRODUCTION_RELEASE.md).

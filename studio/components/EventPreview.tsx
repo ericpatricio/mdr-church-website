@@ -26,7 +26,7 @@ export function EventPreview({document}: {document: {displayed: EventDocument | 
   }, [client, event?.flyer?.asset?._ref])
   if (!event) return <p>No hay contenido para mostrar.</p>
   const validDates = event.start && Number.isFinite(Date.parse(event.start)) &&
-    (!event.end || Number.isFinite(Date.parse(event.end)))
+    (!event.end || (Number.isFinite(Date.parse(event.end)) && Date.parse(event.end) > Date.parse(event.start)))
   const translations = language === 'es'
     ? {eventDetails: 'Detalles del evento', eventCancelled: 'Cancelado', eventRegister: 'Inscribirme'}
     : {eventDetails: 'Event details', eventCancelled: 'Cancelled', eventRegister: 'Register'}
@@ -35,13 +35,14 @@ export function EventPreview({document}: {document: {displayed: EventDocument | 
     status: event.condition === 'cancelled' ? 'cancelled' : 'published',
     title: event.title || {es: 'Título pendiente', en: 'Title pending'},
     description: event.description || {es: '', en: ''},
-    details: event.details || {es: '', en: ''},
+    details: event.details,
     location: event.location || '',
     imageUrl,
   }, language, translations) : '<p>Completa una fecha válida para ver la tarjeta.</p>'
   const preview = `<!doctype html><html lang="${language}"><head><meta name="viewport" content="width=device-width, initial-scale=1"><style>${previewStyles}</style></head><body><main class="container">${markup}</main></body></html>`
   return <div style={{padding: 24, maxWidth: 800, margin: 'auto'}}>
     <p>Vista previa privada · No publica cambios</p>
+    {event.end && Date.parse(event.end) <= Date.now() && <p role="status">Finalizado: este evento ya no aparece en las listas públicas.</p>}
     <label>Idioma <select value={language} onChange={e => setLanguage(e.target.value)}>
       <option value="es">Español</option><option value="en">English</option>
     </select></label>

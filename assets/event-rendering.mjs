@@ -16,8 +16,8 @@ export function renderEventCard(event, lang, translations, hidden = false) {
   <div><p class="eyebrow">${time(event.start)}${event.end ? ` – ${time(event.end)}` : ''} · ${EVENT_TIME_ZONE}</p>
   ${cancelled ? `<p class="event-cancelled"><strong>${translations.eventCancelled}</strong></p>` : ''}
   <h3>${esc(event.title[lang])}</h3><p>${event.venue ? `${esc(event.venue)}<br>` : ''}${esc(event.location)}</p>
-  <p>${esc(event.description[lang])}</p><details><summary>${translations.eventDetails}</summary><p>${esc(event.details[lang])}</p>
-  ${event.contact ? `<p>${esc(event.contact[lang])}</p>` : ''}</details>
+  <p>${esc(event.description[lang])}</p>${event.details?.[lang] || event.contact ? `<details><summary>${translations.eventDetails}</summary>${event.details?.[lang] ? `<p>${esc(event.details[lang])}</p>` : ''}
+  ${event.contact ? `<p>${esc(event.contact[lang])}</p>` : ''}</details>` : ''}
   ${event.registrationUrl && !cancelled ? `<a class="text-link" href="${esc(event.registrationUrl)}">${translations.eventRegister}</a>` : ''}</div>
 </article>`;
 }

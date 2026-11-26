@@ -1,5 +1,6 @@
 import {EventFeed} from './cms-events.mjs';
 import {createEventReconciler} from './event-refresh.mjs';
+import {createExpirationClock} from './event-expiration.mjs';
 
 // Shared rendering for the local POC and the opt-in static release candidate.
 export function mountCmsEvents(configuration, {preview = false} = {}) {
@@ -23,6 +24,7 @@ export function mountCmsEvents(configuration, {preview = false} = {}) {
     }
     return {group, status, update: createEventReconciler(list, language, translations)};
   });
+  const expiration = createExpirationClock(() => render());
   function render() {
     const snapshot = feed.snapshot();
     const available = ['ready', 'stale'].includes(snapshot.status);
@@ -41,10 +43,12 @@ export function mountCmsEvents(configuration, {preview = false} = {}) {
       status.hidden = !message;
       group.dataset.cmsUnavailable = String(!available);
     }
+    expiration.update(available ? snapshot.events : []);
     document.dispatchEvent(new Event('mdr-events-updated'));
   }
   async function refresh(force = false) {
     if (document.hidden) return;
+    render(); // Local expiry must not wait for a slow or unavailable network.
     if (force || Date.now() >= feed.nextAttempt) {
       await feed.load();
       if (feed.failed) console.warn('MDR events:', feed.lastError);
@@ -54,5 +58,9 @@ export function mountCmsEvents(configuration, {preview = false} = {}) {
   render();
   refresh(true);
   setInterval(() => refresh(), 10_000);
-  document.addEventListener('visibilitychange', () => refresh(true));
+  const resume = () => {render(); refresh(true);};
+  document.addEventListener('visibilitychange', resume);
+  globalThis.addEventListener?.('pageshow', resume);
+  globalThis.addEventListener?.('focus', resume);
+  globalThis.addEventListener?.('online', resume);
 }
