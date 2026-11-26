@@ -1,6 +1,6 @@
 # Eventos MDR: guía para la iglesia
 
-**Versión candidata MDR-CMS-001.** Estas mejoras necesitan aprobación y despliegue antes de aparecer en Studio. No se han cambiado los eventos existentes.
+**Actualización candidata MDR-CMS-002.** El formato de 12 horas necesita aprobación y despliegue antes de aparecer en Studio y el sitio. No se han cambiado los eventos existentes.
 
 Studio: https://mdr-eventos.sanity.studio/
 Sitio: https://ericpatricio.github.io/mdr-church-website/
@@ -10,7 +10,7 @@ Sitio: https://ericpatricio.github.io/mdr-church-website/
 Entre con su propia cuenta invitada. En **Eventos → Todos los eventos y borradores**, cree un Evento. Studio guarda mientras escribe: espere la confirmación de guardado antes de cerrar. Si pierde conexión, no cierre con cambios pendientes.
 
 1. **Información del evento.** Complete el título y la descripción en español e inglés. No tiene que crear un identificador ni pulsar Generar; el sistema identifica el evento automáticamente. Eventos con el mismo título siguen siendo registros diferentes.
-2. **Fecha y horario.** Indique **Inicio** y **Finalización**. Ambas fechas y horas son necesarias para publicar; la finalización debe ser posterior al inicio. El selector usa la hora de Nueva York / Florida y aplica el horario de verano. Compruebe especialmente la hora repetida del cambio de horario de noviembre.
+2. **Fecha y horario.** Indique **Inicio** y **Finalización**. Ambas fechas y horas son necesarias para publicar; la finalización debe ser posterior al inicio. El selector usa la hora de Nueva York / Florida y aplica el horario de verano. Inicio y Finalización muestran hora de 12 horas: **12:00 AM es medianoche** y **12:00 PM es mediodía**. Compruebe AM/PM antes de publicar. El control del calendario también puede seguir las preferencias regionales de hora del teléfono; no cambie la zona horaria para corregir su formato. Compruebe especialmente la hora repetida del cambio de horario de noviembre.
 3. **Lugar del evento.** Viene seleccionado **En nuestra iglesia** con **Iglesia de Dios Manantial de Restauración — 4360 Monterey Rd, Kissimmee, FL 34758**. No necesita volver a escribir ni confirmar esos datos. Para un evento fuera de la iglesia, seleccione **Otra ubicación** y complete nombre del lugar y dirección. Al volver a nuestra iglesia se conserva la última ubicación alternativa para recuperarla si cambia de nuevo. Los eventos antiguos y duplicados conservan su ubicación; revísela antes de publicar.
 4. **Volante.** Suba JPG, PNG o WebP de máximo 5 MB. Describa brevemente la imagen en ambos idiomas para las personas que no puedan verla. No repita todo el texto del evento. Los archivos son públicos por URL incluso en borrador: no incluya información privada.
 5. **Información adicional**, solo si hace falta. Comunidad viene seleccionada; cambie a Culto especial cuando corresponda. Puede añadir detalles distintos de la descripción, inscripción HTTPS, fuente oficial y contacto verificado. Si añade detalles o contacto, complete ambos idiomas; si no hacen falta, déjelos vacíos. El contacto debe ser información aprobada para publicación.
